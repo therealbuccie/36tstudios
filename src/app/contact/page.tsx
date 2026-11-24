@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Send, CheckCircle2, Mail, MapPin, ArrowUpRight, Sparkles, ShieldCheck } from "lucide-react";
 
 export default function ContactPage() {
-  const [topic, setTopic] = useState("Film Distribution & Licensing");
+  const [scope, setScope] = useState("Build Custom Software");
+  const [timeline, setTimeline] = useState("Q1 2026 (Immediate)");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,12 +15,17 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  const topics = [
-    "Film Distribution & Licensing",
-    "Software & Platform APIs",
-    "Brand & Design Systems",
-    "Private Executive Residences",
-    "General Studio Inquiry",
+  const scopes = [
+    { title: "Build Custom Software", desc: "Turnkey client engineering" },
+    { title: "License Platform IP", desc: "Whisppr / JStream SDK access" },
+    { title: "Design Systems & Brand", desc: "High-density product interfaces" },
+    { title: "Media Lab / Film Theatrical", desc: "Distribution & screening slate" },
+  ];
+
+  const timelines = [
+    "Q1 2026 (Immediate)",
+    "Q2 2026 (1-3 Months)",
+    "Flexible / Scoping",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,27 +34,27 @@ export default function ContactPage() {
     setTimeout(() => {
       setIsSending(false);
       setSubmitted(true);
-    }, 800);
+    }, 600);
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0C] text-[#FFFFFF] relative overflow-hidden">
+    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] relative overflow-hidden">
       
       {/* Ambient Color Splash */}
-      <div className="absolute top-0 left-1/3 w-[600px] h-[350px] bg-[#F59247]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/3 w-[600px] h-[350px] bg-[#00E5FF]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Header Banner */}
-      <section className="px-6 pt-20 pb-12 sm:pt-28 sm:pb-16 max-w-5xl mx-auto">
+      <section className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 max-w-5xl mx-auto">
         <div className="space-y-4 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] text-xs font-medium text-zinc-300">
-            <span className="w-2 h-2 rounded-full bg-[#F59247] shadow-[0_0_6px_#F59247]" />
-            <span>Get in Touch</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-xs font-mono text-[#00E5FF]">
+            <Sparkles className="w-3 h-3" />
+            <span>Direct Foundry Intake</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white">
-            Let&apos;s Talk.
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white font-sans">
+            Start a Project.
           </h1>
           <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed">
-            Have a project in mind, want to license our platforms, or inquire about our film slate? Send us a note and our team will get back to you promptly.
+            We partner with ambitious enterprises and visionary founders to engineer custom applications and license our proprietary platform infrastructure.
           </p>
         </div>
       </section>
@@ -57,18 +63,18 @@ export default function ContactPage() {
       <section className="px-6 pb-24 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left: Contact Form */}
+          {/* Left: Project Intake Form */}
           <div className="lg:col-span-7">
             {submitted ? (
-              <div className="p-8 sm:p-12 rounded-3xl bg-[#141418] border border-white/20 text-center space-y-4 shadow-2xl animate-in zoom-in-95 duration-200">
-                <div className="w-14 h-14 rounded-full bg-[#F59247]/20 text-[#F59247] flex items-center justify-center mx-auto">
+              <div className="p-8 sm:p-12 rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in zoom-in-95 duration-200">
+                <div className="w-14 h-14 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">
-                  Message Received
+                  Project Brief Dispatched
                 </h3>
-                <p className="text-sm text-zinc-400 max-w-md mx-auto font-light leading-relaxed">
-                  Thank you for contacting 36T Studios. Your note regarding <strong>{topic}</strong> has been routed to our team. We will review your message and reply within one business day.
+                <p className="text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
+                  Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. Your brief regarding <strong>{scope}</strong> has been routed to our technical leadership in Delaware. We will respond within one business day.
                 </p>
                 <div className="pt-4">
                   <button
@@ -76,30 +82,54 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setFormData({ name: "", email: "", organization: "", message: "" });
                     }}
-                    className="px-6 py-2.5 rounded-full bg-[#F59247] text-black text-xs font-bold tracking-wide hover:bg-[#FF9F59] transition-colors"
+                    className="px-6 py-2.5 rounded-full bg-[#00E5FF] text-black text-xs font-bold tracking-wide hover:bg-[#33EAFF] transition-colors"
                   >
-                    Send Another Note
+                    Submit Another Brief
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-8 sm:p-10 rounded-3xl bg-[#141418] border border-white/[0.08] hover:border-[#F59247]/20 transition-colors space-y-6 shadow-2xl">
+              <form onSubmit={handleSubmit} className="p-8 sm:p-10 rounded-3xl bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/30 transition-colors space-y-6 shadow-2xl">
                 
-                {/* Topic Selector */}
+                {/* Scope Selection */}
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-zinc-300 block">
-                    HOW CAN WE COLLABORATE?
+                  <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                    01 // PROJECT SCOPE
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {topics.map((t) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {scopes.map((s) => (
+                      <button
+                        type="button"
+                        key={s.title}
+                        onClick={() => setScope(s.title)}
+                        className={`p-3.5 rounded-xl border text-left transition-all ${
+                          scope === s.title
+                            ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_12px_rgba(0,229,255,0.2)]"
+                            : "bg-white/[0.02] border-white/[0.06] text-zinc-400 hover:border-white/20"
+                        }`}
+                      >
+                        <span className="block text-xs font-mono font-semibold text-white mb-0.5">{s.title}</span>
+                        <span className="text-[10px] text-zinc-400">{s.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Timeline Selector */}
+                <div className="space-y-2">
+                  <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                    02 // TARGET TIMELINE
+                  </label>
+                  <div className="grid grid-cols-3 gap-2 text-xs font-mono">
+                    {timelines.map((t) => (
                       <button
                         type="button"
                         key={t}
-                        onClick={() => setTopic(t)}
-                        className={`p-3.5 rounded-xl border text-xs font-medium text-left transition-all ${
-                          topic === t
-                            ? "bg-[#F59247] text-black border-[#F59247] font-bold shadow-[0_0_15px_rgba(245,146,71,0.3)]"
-                            : "bg-[#0A0A0C] border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/[0.18]"
+                        onClick={() => setTimeline(t)}
+                        className={`py-2 px-3 rounded-lg border text-center transition-all ${
+                          timeline === t
+                            ? "bg-white/10 border-white text-white font-semibold"
+                            : "bg-black/30 border-white/[0.06] text-zinc-400 hover:border-white/20"
                         }`}
                       >
                         {t}
@@ -108,130 +138,126 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Name & Email */}
+                {/* Name & Email Fields */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-zinc-400 block">YOUR NAME *</label>
+                    <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                      Lead Name *
+                    </label>
                     <input
-                      required
                       type="text"
-                      placeholder="Jane Doe"
+                      required
+                      placeholder="Alex Mercer"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[#F59247] text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-zinc-400 block">EMAIL ADDRESS *</label>
+                    <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                      Work Email *
+                    </label>
                     <input
-                      required
                       type="email"
-                      placeholder="jane@company.com"
+                      required
+                      placeholder="alex@enterprise.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[#F59247] text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                     />
                   </div>
                 </div>
 
-                {/* Organization */}
+                {/* Organization Field */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-zinc-400 block">ORGANIZATION / COMPANY</label>
+                  <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                    Company / Organization
+                  </label>
                   <input
                     type="text"
-                    placeholder="Studio, Fund, or Company Name"
+                    placeholder="Acme Corp or Stealth Venture"
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[#F59247] text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                   />
                 </div>
 
-                {/* Message */}
+                {/* Project Description Field */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-zinc-400 block">YOUR MESSAGE *</label>
+                  <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
+                    Project Scope &amp; Technical Requirements
+                  </label>
                   <textarea
-                    required
-                    rows={5}
-                    placeholder="Tell us about your project, timeline, or requirements..."
+                    rows={4}
+                    placeholder="Describe your technical architecture, target platforms, or platform licensing requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-4 rounded-xl bg-[#0A0A0C] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[#F59247] text-sm leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
                   />
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={isSending}
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#F59247] hover:bg-[#FF9F59] text-black text-sm font-bold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(245,146,71,0.35)] disabled:opacity-50"
-                  >
-                    {isSending ? (
-                      <span>Sending...</span>
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <Send className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                  </button>
-                </div>
-
+                <button
+                  type="submit"
+                  disabled={isSending}
+                  className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4 text-black" />
+                  <span>{isSending ? "Dispatching..." : "Submit Project Brief"}</span>
+                </button>
               </form>
             )}
           </div>
 
-          {/* Right: Clean Studio Contact Information */}
+          {/* Right: Studio Registry & Direct Channels */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-[#141418] border border-white/[0.08] space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#F59247]/5 rounded-full blur-2xl pointer-events-none" />
-
-              <h3 className="text-lg font-bold text-white relative z-10">
-                Direct Channels
-              </h3>
-
-              <div className="space-y-4 text-sm font-light relative z-10">
-                <div className="space-y-1">
-                  <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">
-                    General Inquiries
-                  </div>
-                  <a
-                    href="mailto:hello@36tstudios.com"
-                    className="text-white hover:text-[#F59247] transition-colors flex items-center gap-1 font-normal"
-                  >
-                    <span>hello@36tstudios.com</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#F59247]" />
-                  </a>
-                </div>
-
-                <div className="space-y-1">
-                  <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">
-                    Theatrical & Festival Licensing
-                  </div>
-                  <a
-                    href="mailto:licensing@36tstudios.com"
-                    className="text-white hover:text-[#F59247] transition-colors flex items-center gap-1 font-normal"
-                  >
-                    <span>licensing@36tstudios.com</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#F59247]" />
-                  </a>
-                </div>
-
-                <div className="space-y-1">
-                  <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">
-                    Headquarters
-                  </div>
-                  <div className="text-zinc-300">
-                    Delaware, United States
-                  </div>
-                </div>
+            
+            {/* Delaware Corporate Registry */}
+            <div className="p-8 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#00E5FF] font-semibold">
+                <ShieldCheck className="w-4 h-4" />
+                <span>CORPORATE HEADQUARTERS</span>
               </div>
-
-              <div className="pt-4 border-t border-white/[0.06] text-xs text-zinc-500 leading-relaxed font-light relative z-10">
-                All communications are handled with discretion and confidentiality. We typically respond within 24 hours.
+              <h3 className="text-xl font-bold text-white">36T Studios LLC</h3>
+              <p className="text-xs text-zinc-400 font-mono leading-relaxed">
+                Corporation Trust Center<br />
+                1209 North Orange Street<br />
+                Wilmington, Delaware 19801<br />
+                United States of America
+              </p>
+              <div className="pt-2 text-[11px] font-mono text-zinc-500 border-t border-white/[0.06]">
+                REGISTRATION: DELAWARE JURISDICTION // PRIVATE FOUNDRY
               </div>
             </div>
+
+            {/* Direct Inquiries Card */}
+            <div className="p-8 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4">
+              <span className="text-xs font-mono uppercase text-[#FF8A00] tracking-wider block">
+                DIRECT INQUIRY CHANNELS
+              </span>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <span className="text-xs font-mono text-zinc-500 block">Client Commissions:</span>
+                  <a href="mailto:commissions@36tstudios.com" className="text-white hover:text-[#00E5FF] font-mono text-xs transition-colors">
+                    commissions@36tstudios.com
+                  </a>
+                </li>
+                <li>
+                  <span className="text-xs font-mono text-zinc-500 block">IP Licensing &amp; SDK:</span>
+                  <a href="mailto:licensing@36tstudios.com" className="text-white hover:text-[#00E5FF] font-mono text-xs transition-colors">
+                    licensing@36tstudios.com
+                  </a>
+                </li>
+                <li>
+                  <span className="text-xs font-mono text-zinc-500 block">General Administration:</span>
+                  <a href="mailto:inquiries@36tstudios.com" className="text-white hover:text-[#00E5FF] font-mono text-xs transition-colors">
+                    inquiries@36tstudios.com
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </div>
 
         </div>

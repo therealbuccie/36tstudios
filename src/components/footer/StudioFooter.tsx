@@ -8,7 +8,7 @@ export function StudioFooter() {
     <footer className="w-full border-t border-white/[0.08] bg-[#07080A] text-zinc-400 relative overflow-hidden">
       {/* Subtle corner ambient glow */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00E5FF]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#F59247]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#FF8A00]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 sm:py-20">
         
@@ -19,7 +19,7 @@ export function StudioFooter() {
           <div className="md:col-span-2 space-y-4">
             <StudioLogo size="md" />
             <p className="text-sm text-zinc-400 leading-relaxed max-w-sm font-light pt-1">
-              Independent American Software &amp; Systems Studio. We engineer proprietary real-time communication protocols, planar touch interfaces, and high-throughput media infrastructure.
+              Independent American Product Studio &amp; Software Foundry. We engineer proprietary digital platforms and partner with visionary enterprises on mission-critical applications.
             </p>
             <div className="pt-2">
               <a 
@@ -32,46 +32,46 @@ export function StudioFooter() {
             </div>
           </div>
 
-          {/* Column 1: Platforms */}
+          {/* Column 1: Proprietary IP */}
           <div className="space-y-4">
             <div className="text-xs font-semibold text-white tracking-wider uppercase flex items-center gap-1.5 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-              Platforms
+              Proprietary IP
             </div>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/platforms#whisppr" className="hover:text-white transition-colors">Whisppr Transport</Link>
-              </li>
-              <li>
-                <Link href="/platforms#jos" className="hover:text-white transition-colors">jOS Planar Shell</Link>
+                <Link href="/platforms#whisppr" className="hover:text-white transition-colors">Whisppr SDK</Link>
               </li>
               <li>
                 <Link href="/platforms#jstream" className="hover:text-white transition-colors">JStream Engine</Link>
               </li>
               <li>
-                <Link href="/platforms#jai" className="hover:text-white transition-colors">JAI Agent Protocol</Link>
+                <Link href="/platforms#jos" className="hover:text-white transition-colors">jOS Planar Shell</Link>
+              </li>
+              <li>
+                <Link href="/platforms#licensing" className="hover:text-white transition-colors">IP Licensing Desk</Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: Design Systems */}
+          {/* Column 2: Client Engineering */}
           <div className="space-y-4">
             <div className="text-xs font-semibold text-white tracking-wider uppercase flex items-center gap-1.5 font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F59247]" />
-              Design
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00]" />
+              Client Engineering
             </div>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/#design" className="hover:text-white transition-colors">Visual Architecture</Link>
+                <Link href="/#engineering" className="hover:text-white transition-colors">Complete Platform Build</Link>
               </li>
               <li>
-                <Link href="/#design" className="hover:text-white transition-colors">Vector Trademarks</Link>
+                <Link href="/#engineering" className="hover:text-white transition-colors">Real-Time Infrastructure</Link>
               </li>
               <li>
-                <Link href="/#design" className="hover:text-white transition-colors">Typography Frameworks</Link>
+                <Link href="/#engineering" className="hover:text-white transition-colors">Design Systems &amp; Brand</Link>
               </li>
               <li>
-                <Link href="/studio#spaces" className="hover:text-white transition-colors">Spatial Residences</Link>
+                <Link href="/contact" className="hover:text-white transition-colors">Commission Scope</Link>
               </li>
             </ul>
           </div>
@@ -83,31 +83,31 @@ export function StudioFooter() {
             </div>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/work#flagship" className="hover:text-white transition-colors">Narrative Cinema</Link>
+                <Link href="/#media" className="hover:text-white transition-colors">Narrative Cinema</Link>
               </li>
               <li>
-                <Link href="/work#flagship" className="hover:text-white transition-colors">I&apos;ve Got It (Dec 2026)</Link>
+                <Link href="/work" className="hover:text-white transition-colors">Original Feature Slate</Link>
               </li>
               <li>
-                <Link href="/work" className="hover:text-white transition-colors">Production Reel</Link>
+                <Link href="/work#flagship" className="hover:text-white transition-colors">Production Ledger</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">Distribution Inquiries</Link>
+                <Link href="/contact" className="hover:text-white transition-colors">Theatrical Inquiries</Link>
               </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar with Master PRD Credits */}
+        {/* Corporate Registration Footer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
           <div className="font-mono">
-            © 2026 36T Studios LLC. Delaware, United States. Independent Software, Systems &amp; Media.
+            © 2026 36T Studios LLC. Delaware, United States. All Rights Reserved.
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/platforms" className="hover:text-zinc-300 transition-colors">Platforms</Link>
-            <Link href="/#design" className="hover:text-zinc-300 transition-colors">Design</Link>
-            <Link href="/work" className="hover:text-zinc-300 transition-colors">Media Lab</Link>
+            <Link href="/#products" className="hover:text-zinc-300 transition-colors">Products</Link>
+            <Link href="/#engineering" className="hover:text-zinc-300 transition-colors">Client Engineering</Link>
+            <Link href="/#media" className="hover:text-zinc-300 transition-colors">Media Lab</Link>
             <Link href="/contact" className="hover:text-zinc-300 transition-colors">Contact</Link>
           </div>
         </div>

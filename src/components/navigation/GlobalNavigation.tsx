@@ -11,10 +11,10 @@ export const GlobalNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const links = [
-    { label: "Platforms", href: "/platforms" },
-    { label: "Ecosystem", href: "/#ecosystem" },
-    { label: "Media", href: "/work" },
-    { label: "Company", href: "/studio" },
+    { label: "Products", href: "/#products" },
+    { label: "Client Engineering", href: "/#engineering" },
+    { label: "Media Lab", href: "/#media" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -22,17 +22,17 @@ export const GlobalNavigation = () => {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#07080A]/90 backdrop-blur-xl transition-all">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           
-          {/* Official 36T Studio Logo */}
+          {/* Mathematically Perfect 1:1 Responsive Studio Logo */}
           <StudioLogo size="md" />
 
-          {/* Desktop Navigation Links: Platforms | Ecosystem | Media | Company */}
+          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8">
             {links.map((item) => {
               const isActive = 
-                pathname === item.href || 
-                (item.href === "/platforms" && (pathname === "/technology" || pathname === "/systems")) ||
-                (item.href === "/work" && (pathname === "/cinema" || pathname === "/media")) ||
-                (item.href === "/studio" && pathname === "/company");
+                pathname === item.href ||
+                (item.href === "/#products" && pathname === "/platforms") ||
+                (item.href === "/#media" && (pathname === "/work" || pathname === "/cinema")) ||
+                (item.href === "/contact" && pathname === "/contact");
               return (
                 <Link
                   key={item.label}
@@ -52,14 +52,14 @@ export const GlobalNavigation = () => {
             })}
           </nav>
 
-          {/* Action Button: Rounded Pill "Contact ↗" */}
+          {/* Action Button: "Start a Project ↗" */}
           <div className="hidden md:flex items-center">
             <Link
-              href="/contact"
-              className="text-xs font-semibold tracking-wide px-4 py-2 rounded-full border border-white/20 bg-white/[0.03] text-white hover:border-[#00E5FF] hover:text-[#00E5FF] hover:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all flex items-center gap-1.5"
+              href="/#contact"
+              className="text-xs font-semibold tracking-wide px-4 py-2 rounded-full bg-[#00E5FF] text-black hover:bg-[#33EAFF] hover:shadow-[0_0_20px_rgba(0,229,255,0.35)] transition-all flex items-center gap-1.5"
             >
-              <span>Contact</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+              <span>Start a Project</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-black" />
             </Link>
           </div>
 
@@ -99,15 +99,15 @@ export const GlobalNavigation = () => {
 
           <div className="space-y-4 pt-8 border-t border-white/[0.08]">
             <Link
-              href="/contact"
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3.5 rounded-full bg-[#00E5FF] text-black text-sm font-bold tracking-wide flex items-center justify-center gap-1.5 shadow-[0_0_25px_rgba(0,229,255,0.4)]"
             >
-              <span>Contact Us</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span>Start a Project</span>
+              <ArrowUpRight className="w-4 h-4 text-black" />
             </Link>
             <p className="text-xs text-zinc-500 text-center font-mono">
-              Independent Software &amp; Systems Studio
+              Product Studio &amp; Software Foundry
             </p>
           </div>
         </div>
