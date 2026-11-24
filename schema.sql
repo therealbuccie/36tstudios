@@ -62,6 +62,27 @@ CREATE TABLE IF NOT EXISTS studio_logs (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 5. Studio Admin Users & Authentication
+CREATE TABLE IF NOT EXISTS admin_users (
+  id TEXT PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  role TEXT DEFAULT 'SUPER_ADMIN',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  last_login DATETIME
+);
+
+CREATE TABLE IF NOT EXISTS admin_sessions (
+  token TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  email TEXT NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT OR REPLACE INTO admin_users (id, email, password_hash, role)
+VALUES ('adm-stacomzy', 'stacomzy20@gmail.com', 'f00d05263b07dbe4cf6ceac6f455dba05504ba90c937bf5d3d0f736b5e116158', 'SUPER_ADMIN');
+
 -- Initial seed data for immediate operational dashboard
 INSERT OR IGNORE INTO client_projects (id, client_name, client_email, project_title, scope, tier, current_milestone, milestone_status, sprint_budget, paid_amount, staging_url, repo_url, target_launch)
 VALUES 

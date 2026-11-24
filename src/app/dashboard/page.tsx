@@ -29,7 +29,10 @@ import {
   Check,
   Plus,
   Send,
-  X
+  X,
+  LogOut,
+  KeyRound,
+  User
 } from "lucide-react";
 import { StudioLogo } from "@/components/brand/StudioLogo";
 
@@ -103,6 +106,18 @@ export default function DashboardPage() {
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [logs, setLogs] = useState<any[]>([]);
 
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [authChecking, setAuthChecking] = useState<boolean>(true);
+  const [currentUser, setCurrentUser] = useState<{ email: string; role: string; name: string } | null>(null);
+
+  // Login Form State
+  const [loginEmail, setLoginEmail] = useState("stacomzy20@gmail.com");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loginSubmitting, setLoginSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   // Filters & Search
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -120,6 +135,72 @@ export default function DashboardPage() {
     current_milestone: "Sprint 1: Architecture Blueprint",
     milestone_status: "scoping",
   });
+
+  const checkSession = async () => {
+    setAuthChecking(true);
+    const token = typeof window !== "undefined" ? localStorage.getItem("36t_admin_token") : null;
+    try {
+      const res = await fetch("/api/auth", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      const data = await res.json();
+      if (data.authenticated) {
+        setIsAuthenticated(true);
+        setCurrentUser(data.user);
+        fetchData();
+      } else {
+        setIsAuthenticated(false);
+      }
+    } catch {
+      setIsAuthenticated(false);
+    } finally {
+      setAuthChecking(false);
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginSubmitting(true);
+    setLoginError("");
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (typeof window !== "undefined" && data.token) {
+          localStorage.setItem("36t_admin_token", data.token);
+        }
+        setIsAuthenticated(true);
+        setCurrentUser(data.user);
+        fetchData();
+      } else {
+        setLoginError(data.error || "Authentication failed. Check email and password.");
+      }
+    } catch {
+      setLoginError("Connection failed. Please try again.");
+    } finally {
+      setLoginSubmitting(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "logout" }),
+      });
+    } catch {}
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("36t_admin_token");
+    }
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+  };
 
   const fetchData = async () => {
     setRefreshing(true);
@@ -142,7 +223,7 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    fetchData();
+    checkSession();
   }, []);
 
   const handleUpdateInquiryStatus = async (id: string, newStatus: string) => {
@@ -223,14 +304,37 @@ export default function DashboardPage() {
             <span className="text-emerald-400 font-bold">● ACTIVE</span>
           </div>
 
-          <button
-            onClick={fetchData}
-            disabled={refreshing}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-mono text-zinc-300 hover:text-white hover:bg-white/[0.08] transition-all"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 text-[#00E5FF] ${refreshing ? "animate-spin" : ""}`} />
-            <span className="hidden xs:inline">Sync</span>
-          </button>
+          {isAuthenticated && (
+            <button
+              onClick={fetchData}
+              disabled={refreshing}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-mono text-zinc-300 hover:text-white hover:bg-white/[0.08] transition-all"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 text-[#00E5FF] ${refreshing ? "animate-spin" : ""}`} />
+              <span className="hidden xs:inline">Sync</span>
+            </button>
+          )}
+
+          {isAuthenticated && currentUser && (
+            <div className="hidden lg:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.03] text-xs font-mono">
+              <User className="w-3.5 h-3.5 text-[#00E5FF]" />
+              <span className="text-zinc-200">{currentUser.email}</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#00E5FF]/20 text-[#00E5FF] font-bold">
+                {currentUser.role}
+              </span>
+            </div>
+          )}
+
+          {isAuthenticated && (
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-500/30 bg-red-500/10 text-xs font-mono text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all cursor-pointer"
+              title="Logout from console"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
+          )}
 
           <Link
             href="/"
@@ -245,7 +349,115 @@ export default function DashboardPage() {
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 space-y-8">
         
-        {/* Navigation Tabs */}
+        {authChecking ? (
+          <div className="min-h-[55vh] flex flex-col items-center justify-center text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur-xl flex items-center justify-center animate-pulse">
+              <KeyRound className="w-7 h-7 text-[#00E5FF]" />
+            </div>
+            <div className="space-y-1.5">
+              <h2 className="text-base font-bold text-white tracking-wide font-mono">Verifying Studio Security Session</h2>
+              <p className="text-xs text-zinc-400 font-mono">Checking Cloudflare Edge D1 cryptographic token...</p>
+            </div>
+          </div>
+        ) : !isAuthenticated ? (
+          <div className="min-h-[65vh] flex items-center justify-center py-6">
+            <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl border border-white/10 bg-[#0D0F15]/90 backdrop-blur-2xl shadow-[0_25px_80px_rgba(0,0,0,0.85)] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#00E5FF]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F59247]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 space-y-6">
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono text-[#00E5FF]">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>RESTRICTED STUDIO CONSOLE</span>
+                  </div>
+                  <h2 className="text-2xl font-extrabold text-white tracking-tight">Admin Authentication</h2>
+                  <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+                    Enter master administrator credentials to access real-time Cloudflare D1 inquiries, client project milestones, and platform telemetry.
+                  </p>
+                </div>
+
+                {loginError && (
+                  <div className="p-3.5 rounded-xl border border-red-500/30 bg-red-500/10 text-xs text-red-300 flex items-start gap-2.5">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span>{loginError}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-zinc-300 block">Administrator Email</label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        required
+                        value={loginEmail}
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                        placeholder="stacomzy20@gmail.com"
+                        className="w-full px-3.5 py-3 rounded-xl bg-black/60 border border-white/15 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#00E5FF] transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-mono text-zinc-300 block">Admin Password</label>
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="text-[11px] font-mono text-zinc-400 hover:text-[#00E5FF] transition-colors"
+                      >
+                        {showPassword ? "Hide" : "Show"}
+                      </button>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        placeholder="••••••••••••"
+                        className="w-full px-3.5 py-3 rounded-xl bg-black/60 border border-white/15 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#00E5FF] transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loginSubmitting}
+                    className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-[#00E5FF] to-[#33EAFF] text-black font-bold text-sm tracking-wide hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                  >
+                    {loginSubmitting ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin text-black" />
+                        <span>Verifying Session...</span>
+                      </>
+                    ) : (
+                      <>
+                        <KeyRound className="w-4 h-4 text-black" />
+                        <span>Unlock Console →</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+
+                <div className="pt-4 border-t border-white/[0.08] text-center space-y-2">
+                  <p className="text-[11px] font-mono text-zinc-500">
+                    Active D1 Database: <span className="text-zinc-300">36tstudios-db (WEUR)</span>
+                  </p>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors"
+                  >
+                    <span>← Return to Public Studio</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Navigation Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-white/[0.08] scrollbar-none font-mono text-xs">
           <button
             onClick={() => setActiveTab("overview")}
@@ -991,6 +1203,16 @@ export default function DashboardPage() {
                     desc: "Immutable studio audit logs and operational edge telemetry.",
                     columns: "id, action, entity_type, entity_id, actor, details, created_at",
                   },
+                  {
+                    name: "admin_users",
+                    desc: "Authorized studio directors, super administrators, and credential hashes.",
+                    columns: "id, email, password_hash, role, created_at, last_login",
+                  },
+                  {
+                    name: "admin_sessions",
+                    desc: "Cryptographically generated edge session tokens with expiration timestamps.",
+                    columns: "token, user_id, email, created_at, expires_at",
+                  },
                 ].map((tbl) => (
                   <div key={tbl.name} className="p-4 rounded-xl bg-[#0D0E15] border border-white/[0.08] space-y-2">
                     <div className="flex items-center justify-between">
@@ -1007,6 +1229,8 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
+        </>
+      )}
 
       </div>
 
