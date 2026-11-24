@@ -62,8 +62,7 @@ export default function TermsPage() {
               </div>
               <div className="pt-2 border-t border-white/[0.06]">
                 <span className="text-[#F59247] block uppercase text-[10px] mb-0.5">Nigeria Center &amp; Operations</span>
-                Danbide Millennium Estate<br />
-                22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+                Danbide Millennium Estate, Nigeria
               </div>
               <div className="pt-2 border-t border-white/[0.06] text-zinc-400">
                 Official Inquiries: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a> • Billing: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a>
@@ -169,7 +168,7 @@ export default function TermsPage() {
               </div>
               <div className="text-zinc-400">
                 <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
-                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+                Danbide Millennium Estate, Nigeria
               </div>
             </div>
           </section>

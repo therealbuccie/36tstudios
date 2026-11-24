@@ -129,7 +129,7 @@ export default function FulfillmentPolicyPage() {
               </div>
               <div className="text-zinc-400">
                 <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
-                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+                Danbide Millennium Estate, Nigeria
               </div>
             </div>
           </section>

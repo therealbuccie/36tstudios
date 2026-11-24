@@ -139,7 +139,7 @@ export function StudioFooter() {
                 <span className="leading-relaxed">
                   <strong className="text-white block font-sans text-xs">Nigeria Center</strong>
                   Danbide Millennium Estate<br />
-                  22/23 Doherty St, Alausa, Lagos
+                  Nigeria
                 </span>
               </div>
               <div className="pt-1.5 space-y-1.5 border-t border-white/[0.06]">

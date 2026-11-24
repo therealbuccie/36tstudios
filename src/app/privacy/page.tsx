@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               36T Studios is committed to safeguarding personal information in strict compliance with the <strong className="text-white">Nigeria Data Protection Act (NDPA) 2023</strong>, the Nigeria Data Protection Regulation (NDPR), and applicable international privacy benchmarks (including GDPR-aligned data subject protections for global clientele).
             </p>
             <p className="text-xs text-zinc-400">
-              Data Controller: 36T Studios LLC • USA: 1209 North Orange St, Wilmington, DE 19801 • Nigeria Center: Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria.
+              Data Controller: 36T Studios LLC • USA: 1209 North Orange St, Wilmington, DE 19801 • Nigeria Center: Danbide Millennium Estate, Nigeria.
             </p>
           </section>
 
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
               </div>
               <div className="text-zinc-400">
                 <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
-                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+                Danbide Millennium Estate, Nigeria
               </div>
             </div>
           </section>
