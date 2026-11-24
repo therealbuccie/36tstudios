@@ -167,7 +167,7 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full"
           >
             <Image
-              src="/neomathic/hero-hires.jpg"
+              src="/neomathic/hero-scene.jpg"
               alt="Neomathic 3D Arch and Crystal Scene"
               fill
               className="object-cover object-[75%_center] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
