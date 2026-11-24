@@ -46,12 +46,12 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] relative overflow-hidden">
+    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] relative overflow-x-hidden w-full max-w-full">
       
       {/* Ambient Color Splashes: Cold Electric Cyan (#00E5FF) & Warm Solar Amber (#FF8A00) */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[520px] bg-gradient-to-tr from-[#00E5FF]/15 via-[#00D4F0]/10 to-[#FF8A00]/12 rounded-full blur-[150px] pointer-events-none -z-10" />
-      <div className="absolute top-[1100px] -left-48 w-[550px] h-[550px] bg-[#00E5FF]/8 rounded-full blur-[160px] pointer-events-none -z-10" />
-      <div className="absolute top-[2300px] -right-48 w-[600px] h-[600px] bg-[#FF8A00]/8 rounded-full blur-[170px] pointer-events-none -z-10" />
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[340px] xs:w-[600px] sm:w-[1000px] h-[350px] sm:h-[520px] bg-gradient-to-tr from-[#00E5FF]/15 via-[#00D4F0]/10 to-[#FF8A00]/12 rounded-full blur-[120px] sm:blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-[1100px] -left-48 w-[400px] sm:w-[550px] h-[400px] sm:h-[550px] bg-[#00E5FF]/8 rounded-full blur-[140px] sm:blur-[160px] pointer-events-none -z-10" />
+      <div className="absolute top-[2300px] -right-48 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#FF8A00]/8 rounded-full blur-[140px] sm:blur-[170px] pointer-events-none -z-10" />
 
       {/* ======================================================== */}
       {/* 1. HERO COMPONENT: Software Architecture & Product Foundry */}
@@ -61,24 +61,24 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 2. SECTION 1: PROPRIETARY APPLICATIONS (Ready to License)*/}
       {/* ======================================================== */}
-      <section id="products" className="px-6 py-20 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-4 mb-16 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
+      <section id="products" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 text-center sm:text-left">
+          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
             <Cpu className="w-3.5 h-3.5 text-[#00E5FF]" />
             <span>01 // In-House Intellectual Property</span>
           </div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
                 Proprietary Platforms
               </h2>
-              <p className="mt-2 text-base text-zinc-400 max-w-2xl font-light">
+              <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
                 In-house software available for enterprise licensing, direct SDK integration, and turnkey deployment.
               </p>
             </div>
             <Link
               href="/platforms"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors"
+              className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors pt-2 sm:pt-0"
             >
               <span>Explore Technical Whitepapers</span>
               <ArrowRight className="w-4 h-4 text-[#00E5FF]" />
@@ -87,40 +87,40 @@ export default function HomePage() {
         </div>
 
         {/* 3 Core Product Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
           
           {/* Product 1: Whisppr */}
-          <div className="group rounded-3xl p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
+          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
-                  <MessageSquare className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30">
+                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30">
                   Available for License / SDK
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Whisppr</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Whisppr</h3>
               <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
                 Edge-native encrypted voice and video calling architecture powered by low-latency WebRTC and hardware-accelerated codecs.
               </p>
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-white/[0.06]">
+            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
               <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Latency</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Latency</span>
                   <span className="text-white font-semibold">&lt; 12ms Edge</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Encryption</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Encryption</span>
                   <span className="text-emerald-400 font-semibold">AES-256 GCM</span>
                 </div>
               </div>
               <a 
                 href="#contact"
                 onClick={() => setFormScope("license")}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform py-1"
               >
                 <span>Request SDK Access</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -129,37 +129,37 @@ export default function HomePage() {
           </div>
 
           {/* Product 2: JStream */}
-          <div className="group rounded-3xl p-8 bg-[#101216] border border-white/[0.08] hover:border-[#FF8A00]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(255,138,0,0.12)]">
+          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#FF8A00]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(255,138,0,0.12)]">
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF8A00]/10 border border-[#FF8A00]/20 flex items-center justify-center text-[#FF8A00]">
-                  <Tv className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FF8A00]/10 border border-[#FF8A00]/20 flex items-center justify-center text-[#FF8A00]">
+                  <Tv className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] border border-[#FF8A00]/30">
+                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] border border-[#FF8A00]/30">
                   Enterprise Infrastructure
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">JStream</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">JStream</h3>
               <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
                 Distributed media streaming and content delivery core designed for sub-second live ingestion, multi-region relays, and client-branded playback.
               </p>
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-white/[0.06]">
+            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
               <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Ingestion</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Ingestion</span>
                   <span className="text-white font-semibold">Sub-Second</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Architecture</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Architecture</span>
                   <span className="text-[#FF8A00] font-semibold">Multi-Region Edge</span>
                 </div>
               </div>
               <a 
                 href="#contact"
                 onClick={() => setFormScope("license")}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#FF8A00] group-hover:translate-x-1 transition-transform"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#FF8A00] group-hover:translate-x-1 transition-transform py-1"
               >
                 <span>Inquire for Deployment</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -168,36 +168,36 @@ export default function HomePage() {
           </div>
 
           {/* Product 3: jOS */}
-          <div className="group rounded-3xl p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
+          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
-                  <Layers className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                  <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-zinc-300 border border-white/[0.12]">
+                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-zinc-300 border border-white/[0.12]">
                   Core Research
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">jOS</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">jOS</h3>
               <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
                 Experimental planar mobile operating system shell. Replaces rigid application silos with spatial fluid physics and continuous interaction canvases.
               </p>
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-white/[0.06]">
+            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
               <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Interaction</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Interaction</span>
                   <span className="text-white font-semibold">Planar Spatial</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[10px]">Kernel</span>
+                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
+                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Kernel</span>
                   <span className="text-[#00E5FF] font-semibold">Micro-Engine</span>
                 </div>
               </div>
               <Link 
                 href="/platforms#jos"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform py-1"
               >
                 <span>Read Research Paper</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -211,91 +211,91 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 3. SECTION 2: CLIENT ENGINEERING ("Build With Us")       */}
       {/* ======================================================== */}
-      <section id="engineering" className="px-6 py-20 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-4 mb-14 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#FF8A00]">
+      <section id="engineering" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
+        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-14 text-center sm:text-left">
+          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FF8A00]">
             <Code2 className="w-3.5 h-3.5 text-[#FF8A00]" />
             <span>02 // Client Services</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
             Client Engineering &amp; Ventures
           </h2>
-          <p className="text-base text-zinc-400 max-w-2xl font-light">
+          <p className="text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
             We partner with visionary founders and enterprises to architect, design, and deploy mission-critical software.
           </p>
         </div>
 
         {/* 3 Service Modules */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
           
-          <div className="p-8 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
+          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
             <div className="text-xs font-mono text-[#00E5FF] font-semibold">
               01 // FULL-STACK FOUNDRY
             </div>
-            <h3 className="text-xl font-bold text-white">Complete Platform Build</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white">Complete Platform Build</h3>
             <p className="text-sm text-zinc-400 leading-relaxed font-light">
               Turnkey engineering from wireframes and technical scoping to cloud deployment, automated CI/CD pipelines, and app store submissions.
             </p>
             <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                iOS / Android Native &amp; Cross-Platform
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>iOS / Android Native &amp; Cross-Platform</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                TypeScript / Rust / Next.js Full-Stack
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>TypeScript / Rust / Next.js Full-Stack</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                SOC-2 Compliant Cloud Architecture
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>SOC-2 Compliant Cloud Architecture</span>
               </li>
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
+          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
             <div className="text-xs font-mono text-[#FF8A00] font-semibold">
               02 // SYSTEMS &amp; INFRASTRUCTURE
             </div>
-            <h3 className="text-xl font-bold text-white">Real-Time Infrastructure</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white">Real-Time Infrastructure</h3>
             <p className="text-sm text-zinc-400 leading-relaxed font-light">
               Custom low-latency WebRTC pipelines, distributed media ingestion, edge caching, and scalable websocket microservices.
             </p>
             <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00]" />
-                Sub-20ms Audio/Video Transport
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
+                <span>Sub-20ms Audio/Video Transport</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00]" />
-                Edge Compute &amp; Serverless Workflows
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
+                <span>Edge Compute &amp; Serverless Workflows</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00]" />
-                Autonomous AI Agent Handover
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
+                <span>Autonomous AI Agent Handover</span>
               </li>
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
+          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
             <div className="text-xs font-mono text-[#00E5FF] font-semibold">
               03 // PRODUCT DESIGN
             </div>
-            <h3 className="text-xl font-bold text-white">Design Systems &amp; Brand</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white">Design Systems &amp; Brand</h3>
             <p className="text-sm text-zinc-400 leading-relaxed font-light">
               Monolithic vector marks, custom typography scales, high-density telemetry interfaces, and tactile design systems.
             </p>
             <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                Swiss-German Typographic Hierarchy
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>Swiss-German Typographic Hierarchy</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                Framer / Figma / Code Connect Tokens
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>Framer / Figma / Code Connect Tokens</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-                Hardware Chassis &amp; Industrial Mockups
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
+                <span>Hardware Chassis &amp; Industrial Mockups</span>
               </li>
             </ul>
           </div>
@@ -303,18 +303,18 @@ export default function HomePage() {
         </div>
 
         {/* Client Booking CTA Banner */}
-        <div className="rounded-3xl p-8 sm:p-10 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/[0.12] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/[0.12] flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-[#FF8A00] block mb-1">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#FF8A00] block mb-1">
               Commission Availability
             </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
               Have a product in mind? We are currently booking Q1/Q2 client commissions.
             </h3>
           </div>
           <a
             href="#contact"
-            className="px-6 py-3.5 rounded-full bg-white hover:bg-zinc-200 text-black text-sm font-bold tracking-wide transition-all whitespace-nowrap flex items-center gap-2 shrink-0 shadow-xl"
+            className="w-full md:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-zinc-200 text-black text-sm font-bold tracking-wide transition-all whitespace-nowrap flex items-center justify-center gap-2 shrink-0 shadow-xl min-h-[44px]"
           >
             <span>Schedule Consultation</span>
             <ArrowRight className="w-4 h-4 text-black" />
@@ -325,24 +325,24 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 4. SECTION 3: NARRATIVE & CREATIVE LAB (Film Division)   */}
       {/* ======================================================== */}
-      <section id="media" className="px-6 py-20 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-4 mb-10 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
+      <section id="media" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
+        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-center sm:text-left">
+          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
             <Clapperboard className="w-3.5 h-3.5 text-[#00E5FF]" />
             <span>03 // Narrative &amp; Cinema Division</span>
           </div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
                 Narrative &amp; Visual Media
               </h2>
-              <p className="mt-2 text-base text-zinc-400 max-w-2xl font-light">
+              <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
                 Beyond software, we produce original cinema. 36T Media develops character-driven feature films for international theatrical and streaming distribution.
               </p>
             </div>
             <Link
               href="/work"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors"
+              className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors pt-2 sm:pt-0"
             >
               <span>Explore Anonymized Slate</span>
               <ArrowRight className="w-4 h-4 text-[#00E5FF]" />
@@ -351,7 +351,7 @@ export default function HomePage() {
         </div>
 
         {/* 16:9 Cinematic Video Frame with Anonymized Release Slate */}
-        <div className="group relative rounded-3xl overflow-hidden border border-white/[0.12] hover:border-[#00E5FF]/40 bg-[#101216] aspect-[16/9] sm:aspect-[2.39/1] flex flex-col justify-between p-6 sm:p-10 shadow-2xl transition-all duration-500">
+        <div className="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/[0.12] hover:border-[#00E5FF]/40 bg-[#101216] aspect-[16/11] xs:aspect-[16/9] sm:aspect-[2.39/1] flex flex-col justify-between p-4 xs:p-6 sm:p-10 shadow-2xl transition-all duration-500">
           
           <div className="absolute inset-0 z-0">
             <Image
@@ -363,8 +363,8 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30" />
           </div>
 
-          <div className="relative z-10 flex items-center justify-between text-xs font-mono text-zinc-300">
-            <span className="px-3 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md">
+          <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
+            <span className="px-2.5 sm:px-3 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md truncate max-w-[260px] xs:max-w-none">
               ORIGINAL THEATRICAL RELEASE SLATE // DECEMBER 2026
             </span>
             <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#00E5FF]/20 text-[#00E5FF] border border-[#00E5FF]/40 backdrop-blur-md font-semibold">
@@ -372,30 +372,30 @@ export default function HomePage() {
             </span>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-12">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-8 sm:pt-12">
             <div>
-              <span className="text-xs font-mono tracking-widest uppercase text-[#FF8A00] block mb-1">
+              <span className="text-[10px] sm:text-xs font-mono tracking-widest uppercase text-[#FF8A00] block mb-1">
                 A 36T Media Original
               </span>
-              <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+              <h3 className="text-2xl xs:text-3xl sm:text-5xl font-black text-white tracking-tight">
                 I&apos;VE GOT IT
               </h3>
-              <p className="text-sm text-zinc-300 font-light mt-1 italic">
+              <p className="text-xs sm:text-sm text-zinc-300 font-light mt-1 italic">
                 &ldquo;Integrity has an invoice.&rdquo;
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => setReelModalOpen(true)}
-                className="px-6 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg transition-transform active:scale-95"
+                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 min-h-[44px]"
               >
                 <Play className="w-3.5 h-3.5 fill-current text-black" />
                 <span>Watch Showreel</span>
               </button>
               <Link
                 href="/work"
-                className="px-6 py-3 rounded-full bg-black/70 hover:bg-black border border-white/20 text-white text-xs font-bold tracking-wider uppercase transition-colors"
+                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-black/70 hover:bg-black border border-white/20 text-white text-xs font-bold tracking-wider uppercase flex items-center justify-center transition-colors min-h-[44px]"
               >
                 View Slate
               </Link>
@@ -408,33 +408,33 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 5. PROJECT INTAKE FORM: MetaLab & ustwo-Style Foundry Form*/}
       {/* ======================================================== */}
-      <section id="contact" className="px-6 py-20 sm:py-28 max-w-4xl mx-auto border-t border-white/[0.08] relative">
-        <div className="text-center space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-xs font-mono text-[#00E5FF]">
+      <section id="contact" className="px-4 sm:px-6 py-16 sm:py-28 max-w-4xl mx-auto border-t border-white/[0.08] relative">
+        <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-[11px] sm:text-xs font-mono text-[#00E5FF]">
             <Sparkles className="w-3 h-3" />
             <span>Direct Foundry Intake</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-2xl xs:text-3xl sm:text-5xl font-bold tracking-tight text-white font-sans">
             Start a Project
           </h2>
-          <p className="text-sm text-zinc-400 font-light max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm text-zinc-400 font-light max-w-lg mx-auto px-2">
             Tell us about your upcoming software build, platform licensing requirements, or custom engineering commission.
           </p>
         </div>
 
         {formSubmitted ? (
-          <div className="p-10 rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in fade-in duration-300">
-            <div className="w-14 h-14 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] mx-auto">
-              <CheckCircle2 className="w-7 h-7" />
+          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in fade-in duration-300">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] mx-auto">
+              <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Project Brief Dispatched</h3>
-            <p className="text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">Project Brief Dispatched</h3>
+            <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
               Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. An engineering director from our Delaware office will review your scope and respond within 24 hours.
             </p>
-            <div className="pt-4">
+            <div className="pt-3">
               <button
                 onClick={() => setFormSubmitted(false)}
-                className="text-xs font-mono text-zinc-400 hover:text-white underline underline-offset-4"
+                className="text-xs font-mono text-zinc-400 hover:text-white underline underline-offset-4 py-2"
               >
                 Submit another project inquiry
               </button>
@@ -443,18 +443,18 @@ export default function HomePage() {
         ) : (
           <form 
             onSubmit={handleSubmit}
-            className="p-8 sm:p-12 rounded-3xl bg-[#101216] border border-white/[0.08] space-y-8 shadow-2xl"
+            className="p-5 xs:p-7 sm:p-12 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-6 sm:space-y-8 shadow-2xl"
           >
             {/* Scope Selection Pills */}
             <div className="space-y-3">
               <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                 01 // Select Project Scope
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setFormScope("custom")}
-                  className={`p-3.5 rounded-2xl text-left border text-xs font-mono transition-all ${
+                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
                     formScope === "custom"
                       ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_15px_rgba(0,229,255,0.2)]"
                       : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -467,7 +467,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setFormScope("license")}
-                  className={`p-3.5 rounded-2xl text-left border text-xs font-mono transition-all ${
+                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
                     formScope === "license"
                       ? "bg-[#FF8A00]/10 border-[#FF8A00] text-white shadow-[0_0_15px_rgba(255,138,0,0.2)]"
                       : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -480,7 +480,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setFormScope("design")}
-                  className={`p-3.5 rounded-2xl text-left border text-xs font-mono transition-all ${
+                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
                     formScope === "design"
                       ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_15px_rgba(0,229,255,0.2)]"
                       : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -492,9 +492,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Client Name & Work Email */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
+            {/* Client Name & Work Email - Inputs with 16px (text-base) on mobile to prevent iOS Safari auto-zoom */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="space-y-1.5 sm:space-y-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                   Client / Lead Name *
                 </label>
@@ -504,11 +504,11 @@ export default function HomePage() {
                   placeholder="e.g. Alex Mercer"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.1] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
+                  className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5 sm:space-y-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                   Work Email *
                 </label>
@@ -518,7 +518,7 @@ export default function HomePage() {
                   placeholder="alex@enterprise.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.1] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
+                  className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                 />
               </div>
             </div>
@@ -528,11 +528,11 @@ export default function HomePage() {
               <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                 02 // Target Timeline
               </label>
-              <div className="grid grid-cols-3 gap-3 text-xs font-mono">
+              <div className="grid grid-cols-1 xs:grid-cols-3 gap-2.5 sm:gap-3 text-xs font-mono">
                 <button
                   type="button"
                   onClick={() => setFormTimeline("q1")}
-                  className={`py-2.5 px-3 rounded-xl border text-center transition-all ${
+                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
                     formTimeline === "q1"
                       ? "bg-white/10 border-white text-white font-semibold"
                       : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -543,7 +543,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setFormTimeline("q2")}
-                  className={`py-2.5 px-3 rounded-xl border text-center transition-all ${
+                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
                     formTimeline === "q2"
                       ? "bg-white/10 border-white text-white font-semibold"
                       : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -554,7 +554,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setFormTimeline("flexible")}
-                  className={`py-2.5 px-3 rounded-xl border text-center transition-all ${
+                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
                     formTimeline === "flexible"
                       ? "bg-white/10 border-white text-white font-semibold"
                       : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
@@ -566,7 +566,7 @@ export default function HomePage() {
             </div>
 
             {/* Project Overview Message */}
-            <div className="space-y-2">
+            <div className="space-y-1.5 sm:space-y-2">
               <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                 03 // Project Scope &amp; Technical Requirements
               </label>
@@ -575,14 +575,14 @@ export default function HomePage() {
                 placeholder="Describe your product architecture, target platforms, or licensing requirements..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.1] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
+                className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
               />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2 min-h-[48px] active:scale-[0.99]"
             >
               <Send className="w-4 h-4 text-black" />
               <span>Submit Project Brief</span>

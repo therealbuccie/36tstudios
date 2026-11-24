@@ -44,36 +44,36 @@ export default function ContactPage() {
       <div className="absolute top-0 left-1/3 w-[600px] h-[350px] bg-[#00E5FF]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Header Banner */}
-      <section className="px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 max-w-5xl mx-auto">
-        <div className="space-y-4 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-xs font-mono text-[#00E5FF]">
+      <section className="px-4 sm:px-6 pt-20 pb-10 sm:pt-32 sm:pb-16 max-w-5xl mx-auto">
+        <div className="space-y-3 sm:space-y-4 max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-[11px] sm:text-xs font-mono text-[#00E5FF]">
             <Sparkles className="w-3 h-3" />
             <span>Direct Foundry Intake</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white font-sans">
+          <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white font-sans">
             Start a Project.
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 font-light leading-relaxed">
             We partner with ambitious enterprises and visionary founders to engineer custom applications and license our proprietary platform infrastructure.
           </p>
         </div>
       </section>
 
       {/* Main Grid: Form + Studio Details */}
-      <section className="px-6 pb-24 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="px-4 sm:px-6 pb-20 sm:pb-24 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
           
           {/* Left: Project Intake Form */}
           <div className="lg:col-span-7">
             {submitted ? (
-              <div className="p-8 sm:p-12 rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in zoom-in-95 duration-200">
-                <div className="w-14 h-14 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30 flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-7 h-7" />
+              <div className="p-6 sm:p-12 rounded-2xl sm:rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in zoom-in-95 duration-200">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30 flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-white">
                   Project Brief Dispatched
                 </h3>
-                <p className="text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
                   Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. Your brief regarding <strong>{scope}</strong> has been routed to our technical leadership in Delaware. We will respond within one business day.
                 </p>
                 <div className="pt-4">
@@ -82,14 +82,14 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setFormData({ name: "", email: "", organization: "", message: "" });
                     }}
-                    className="px-6 py-2.5 rounded-full bg-[#00E5FF] text-black text-xs font-bold tracking-wide hover:bg-[#33EAFF] transition-colors"
+                    className="px-6 py-3 rounded-full bg-[#00E5FF] text-black text-xs font-bold tracking-wide hover:bg-[#33EAFF] transition-colors min-h-[44px]"
                   >
                     Submit Another Brief
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-8 sm:p-10 rounded-3xl bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/30 transition-colors space-y-6 shadow-2xl">
+              <form onSubmit={handleSubmit} className="p-5 xs:p-7 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/30 transition-colors space-y-5 sm:space-y-6 shadow-2xl">
                 
                 {/* Scope Selection */}
                 <div className="space-y-2">
@@ -102,7 +102,7 @@ export default function ContactPage() {
                         type="button"
                         key={s.title}
                         onClick={() => setScope(s.title)}
-                        className={`p-3.5 rounded-xl border text-left transition-all ${
+                        className={`p-3.5 rounded-xl border text-left transition-all min-h-[54px] ${
                           scope === s.title
                             ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_12px_rgba(0,229,255,0.2)]"
                             : "bg-white/[0.02] border-white/[0.06] text-zinc-400 hover:border-white/20"
@@ -120,13 +120,13 @@ export default function ContactPage() {
                   <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
                     02 // TARGET TIMELINE
                   </label>
-                  <div className="grid grid-cols-3 gap-2 text-xs font-mono">
+                  <div className="grid grid-cols-1 xs:grid-cols-3 gap-2 text-xs font-mono">
                     {timelines.map((t) => (
                       <button
                         type="button"
                         key={t}
                         onClick={() => setTimeline(t)}
-                        className={`py-2 px-3 rounded-lg border text-center transition-all ${
+                        className={`py-2.5 px-3 rounded-lg border text-center transition-all ${
                           timeline === t
                             ? "bg-white/10 border-white text-white font-semibold"
                             : "bg-black/30 border-white/[0.06] text-zinc-400 hover:border-white/20"
@@ -150,7 +150,7 @@ export default function ContactPage() {
                       placeholder="Alex Mercer"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
+                      className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.08] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                     />
                   </div>
 
@@ -164,7 +164,7 @@ export default function ContactPage() {
                       placeholder="alex@enterprise.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
+                      className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.08] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                     placeholder="Acme Corp or Stealth Venture"
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.08] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
                   />
                 </div>
 
@@ -193,7 +193,7 @@ export default function ContactPage() {
                     placeholder="Describe your technical architecture, target platforms, or platform licensing requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.08] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
                   />
                 </div>
 
@@ -201,7 +201,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2 min-h-[48px] active:scale-[0.99]"
                 >
                   <Send className="w-4 h-4 text-black" />
                   <span>{isSending ? "Dispatching..." : "Submit Project Brief"}</span>

@@ -10,13 +10,13 @@ export function StudioFooter() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00E5FF]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#FF8A00]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 sm:py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 pb-16 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 sm:gap-12 pb-12 sm:pb-16 border-b border-white/[0.06]">
           
           {/* Brand Column with Official Logo */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="sm:col-span-2 md:col-span-2 space-y-4">
             <StudioLogo size="md" />
             <p className="text-sm text-zinc-400 leading-relaxed max-w-sm font-light pt-1">
               Independent American Product Studio &amp; Software Foundry. We engineer proprietary digital platforms and partner with visionary enterprises on mission-critical applications.
@@ -24,7 +24,7 @@ export function StudioFooter() {
             <div className="pt-2">
               <a 
                 href="mailto:inquiries@36tstudios.com" 
-                className="text-xs text-white hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1 group font-mono"
+                className="text-xs text-white hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1 group font-mono py-1"
               >
                 <span>inquiries@36tstudios.com</span>
                 <ArrowUpRight className="w-3 h-3 text-[#00E5FF] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -100,15 +100,15 @@ export function StudioFooter() {
         </div>
 
         {/* Corporate Registration Footer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-          <div className="font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4 text-center sm:text-left">
+          <div className="font-mono text-[11px] sm:text-xs">
             © 2026 36T Studios LLC. Delaware, United States. All Rights Reserved.
           </div>
-          <div className="flex items-center gap-6">
-            <Link href="/#products" className="hover:text-zinc-300 transition-colors">Products</Link>
-            <Link href="/#engineering" className="hover:text-zinc-300 transition-colors">Client Engineering</Link>
-            <Link href="/#media" className="hover:text-zinc-300 transition-colors">Media Lab</Link>
-            <Link href="/contact" className="hover:text-zinc-300 transition-colors">Contact</Link>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-xs">
+            <Link href="/#products" className="hover:text-zinc-300 transition-colors py-1">Products</Link>
+            <Link href="/#engineering" className="hover:text-zinc-300 transition-colors py-1">Client Engineering</Link>
+            <Link href="/#media" className="hover:text-zinc-300 transition-colors py-1">Media Lab</Link>
+            <Link href="/contact" className="hover:text-zinc-300 transition-colors py-1">Contact</Link>
           </div>
         </div>
 
