@@ -110,6 +110,23 @@ body {
   box-shadow: 0 0 35px rgba(245, 146, 71, 0.35);
 }
 
+/* Glassmorphism 2.0 Capabilities Card */
+.glass-card-2 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(16, 18, 27, 0.6) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-2:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 229, 255, 0.15);
+}
+
 /* Radiant aura color splashes */
 .radial-splash-orange {
   background: radial-gradient(circle at 50% 50%, rgba(245, 146, 71, 0.14) 0%, rgba(245, 146, 71, 0.03) 50%, transparent 75%);

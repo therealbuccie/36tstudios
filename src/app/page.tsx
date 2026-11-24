@@ -8,14 +8,15 @@ import {
   ArrowRight, 
   ArrowUpRight, 
   Search, 
-  Users, 
-  Folder, 
-  Trophy, 
-  Heart, 
+  Cpu, 
+  Zap, 
+  Radio, 
+  Layers, 
   X, 
   CheckCircle2, 
-  Send
+  Send 
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -26,38 +27,69 @@ export default function HomePage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "Web Development",
+    service: "Software Architecture",
     message: "",
   });
 
   const services = [
     {
-      id: "design",
-      title: "Graphic Design",
-      subtitle: "Logos, Branding, Social Media",
-      image: "/neomathic/product-laptop.png",
-      link: "/platforms",
-    },
-    {
-      id: "video",
+      id: "media",
+      category: "Original Media & Film",
       title: "Video Production",
-      subtitle: "Shooting, Editing, Motion Graphics",
-      image: "/neomathic/product-camera.png",
-      link: "/work",
+      subtitle: "High-stakes narrative feature films, commercial cinematography, and complete studio post-production.",
+      image: "/neomathic/capabilities/camera-3d.jpg",
+      link: "/media",
+      isExternal: false,
     },
     {
-      id: "web",
-      title: "Web Development",
-      subtitle: "Modern, Responsive Websites",
-      image: "/neomathic/product-code.png",
+      id: "software",
+      category: "Platform Engineering",
+      title: "Software Architecture",
+      subtitle: "Custom mobile apps, low-latency WebRTC communications, and full-stack enterprise cloud platforms.",
+      image: "/neomathic/capabilities/code-3d.jpg",
       link: "/platforms",
+      isExternal: false,
     },
     {
-      id: "photography",
-      title: "Photography",
-      subtitle: "Events, Portraits, Commercial",
-      image: "/neomathic/product-photo.png",
-      link: "https://casting.36tstudios.org",
+      id: "design",
+      category: "Visual Systems",
+      title: "Brand Direction",
+      subtitle: "Agency-grade vector marks, custom typographic design systems, and digital packaging architecture.",
+      image: "/neomathic/capabilities/design-3d.jpg",
+      link: "/design",
+      isExternal: false,
+    },
+    {
+      id: "streaming",
+      category: "J-Platforms Infrastructure",
+      title: "Streaming Networks",
+      subtitle: "Scalable CDN delivery, browser-based portrait live studios, and real-time interactive broadcast tools.",
+      image: "/neomathic/capabilities/streaming-3d.jpg",
+      link: "https://jstreams.pro",
+      isExternal: true,
+    },
+  ];
+
+  const capabilitiesStats = [
+    {
+      value: "100%",
+      label: "Proprietary Codebase & Custom Architecture",
+      icon: <Cpu className="w-5 h-5 text-[#00E5FF]" />,
+    },
+    {
+      value: "< 20ms",
+      label: "Ultra-Low Global Edge Mesh Latency",
+      icon: <Zap className="w-5 h-5 text-[#00E5FF]" />,
+    },
+    {
+      value: "99.98%",
+      label: "Platform SLA & Stream Availability",
+      icon: <Radio className="w-5 h-5 text-[#00E5FF]" />,
+    },
+    {
+      value: "4+",
+      label: "Core Production & Software Disciplines",
+      icon: <Layers className="w-5 h-5 text-[#C084FC]" />,
     },
   ];
 
@@ -89,7 +121,8 @@ export default function HomePage() {
     ? services
     : services.filter(s => 
         s.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        s.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+        s.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.category.toLowerCase().includes(searchQuery.toLowerCase())
       );
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -188,14 +221,46 @@ export default function HomePage() {
 
         </div>
 
-        {/* Floating Interactive Search Bar Capsule (Exact Neomathic Position) */}
-        <div id="search-bar" className="mt-14 sm:mt-20 w-full max-w-2xl mx-auto relative z-20">
-          <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-3">
+      </section>
+
+      {/* ======================================================== */}
+      {/* 2. SECTION: "OUR CAPABILITIES // WHAT WE DO"              */}
+      {/* ======================================================== */}
+      <section id="services" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+          <div>
+            <span className="font-mono text-xs text-zinc-500 tracking-widest uppercase block mb-2">
+              OUR CAPABILITIES // 01
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight font-sans">
+              What <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">We Do</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:max-w-md">
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              From proprietary cloud infrastructure to original cinema, we engineer scalable digital experiences under one roof.
+            </p>
+            <Link
+              href="/platforms"
+              className="text-xs font-mono text-zinc-300 hover:text-white px-4 py-2 rounded-full border border-white/10 hover:border-white/20 transition-all whitespace-nowrap self-start sm:self-auto flex items-center gap-1.5 backdrop-blur-sm"
+            >
+              <span>View All Products</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Floating Interactive Search & Filter Capsule */}
+        <div className="mb-10 sm:mb-12 w-full max-w-2xl mx-auto relative z-20">
+          <div className="backdrop-blur-2xl bg-white/[0.06] border border-white/15 rounded-full p-2 pl-5 sm:pl-6 shadow-2xl flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <Search className="w-4 h-4 text-zinc-400 shrink-0" />
               <input
                 type="text"
-                placeholder="Search services, projects..."
+                placeholder="Search platforms, services, productions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
@@ -203,149 +268,127 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="hidden xs:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-xs font-mono font-medium text-zinc-300">
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 flex items-center justify-center transition-colors text-xs"
+                  title="Clear search"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+              <span className="bg-black/80 text-white text-xs px-4 py-2 rounded-full border border-white/10 font-mono flex items-center gap-1.5 shrink-0 select-none">
                 <span>2025</span>
                 <span className="text-[10px] text-zinc-500">⌄</span>
               </span>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("services");
-                  el?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors shrink-0 shadow-sm"
-                aria-label="Submit search"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         </div>
 
-      </section>
+        {/* 4 Responsive Glassmorphism 2.0 Capabilities Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredServices.map((service, index) => {
+            const CardInner = (
+              <div className="glass-card-2 p-6 flex flex-col justify-between relative overflow-hidden group h-full">
+                {/* Tactile Chassis Corner Screw Dots */}
+                <div className="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+                <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
 
-      {/* ======================================================== */}
-      {/* 2. SECTION: "OUR SERVICES / WHAT WE DO"                   */}
-      {/* ======================================================== */}
-      <section id="services" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 block mb-1">
-              OUR SERVICES
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              What <span className="text-[#D8B4FE]">We Do</span>
-            </h2>
-          </div>
-
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:max-w-md">
-            <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-              From creative design to powerful digital solutions, we help your ideas come to life.
-            </p>
-            <Link
-              href="/platforms"
-              className="px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white tracking-wide transition-all whitespace-nowrap self-start sm:self-auto flex items-center gap-1.5 backdrop-blur-sm"
-            >
-              <span>View All</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-
-        {/* 4 Iconic 3D Glass Product Cards (Exact Neomathic) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              className="group rounded-3xl p-6 bg-gradient-to-b from-[#1C1833]/70 to-[#120F24]/85 border border-white/10 hover:border-[#C084FC]/50 transition-all duration-500 backdrop-blur-2xl flex flex-col justify-between relative overflow-hidden shadow-2xl hover:shadow-[0_15px_45px_rgba(192,132,252,0.18)] hover:-translate-y-1"
-            >
-              {/* Tactile Chassis Corner Screw Dots */}
-              <div className="absolute top-3.5 left-3.5 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
-              <div className="absolute top-3.5 right-3.5 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
-
-              {/* 3D Holographic Visual Asset (Upscaled with Lanczos) */}
-              <div className="relative aspect-[4/3] w-full flex items-center justify-center my-3">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-contain p-1 group-hover:scale-108 group-hover:drop-shadow-[0_10px_25px_rgba(192,132,252,0.4)] transition-all duration-500"
-                />
-              </div>
-
-              {/* Bottom Information & Action */}
-              <div className="pt-2 flex items-end justify-between gap-3">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#D8B4FE] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs text-zinc-400 mt-1 font-light leading-snug">
-                    {service.subtitle}
-                  </p>
+                {/* 3D Asset Placement */}
+                <div className="bg-black/30 rounded-2xl border border-white/5 aspect-square overflow-hidden p-3 flex items-center justify-center relative w-full mb-5 shadow-inner">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
 
-                <Link
-                  href={service.link}
-                  className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-[#C084FC] hover:text-black border border-white/15 text-zinc-300 flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm"
-                  aria-label={`Explore ${service.title}`}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+                {/* Card Information */}
+                <div className="flex flex-col flex-1 justify-between">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#00E5FF] font-medium block mb-1">
+                      {service.category}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-white transition-colors tracking-tight">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-zinc-400 mt-2 font-light leading-relaxed">
+                      {service.subtitle}
+                    </p>
+                  </div>
 
+                  {/* Micro-Interaction Action Bottom Bar */}
+                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                    <span className="font-mono text-[11px] text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                      0{index + 1} // DISCIPLINE
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/12 text-zinc-300 flex items-center justify-center shrink-0 group-hover:bg-[#00E5FF] group-hover:text-black group-hover:border-[#00E5FF] group-hover:shadow-[0_0_20px_rgba(0,229,255,0.45)] transition-all duration-300">
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
+              >
+                {service.isExternal ? (
+                  <a
+                    href={service.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full cursor-pointer focus:outline-none"
+                    aria-label={`Explore ${service.title}`}
+                  >
+                    {CardInner}
+                  </a>
+                ) : (
+                  <Link
+                    href={service.link}
+                    className="block h-full cursor-pointer focus:outline-none"
+                    aria-label={`Explore ${service.title}`}
+                  >
+                    {CardInner}
+                  </Link>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Full-Width Connected Glass Metrics Ribbon (Section 4) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-10 sm:mt-14 rounded-3xl p-6 sm:px-8 sm:py-6 bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] border border-white/12 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-0 sm:divide-x divide-white/[0.08]"
+        >
+          {capabilitiesStats.map((stat, idx) => (
+            <div key={idx} className="flex items-center gap-4 px-2 sm:px-6 py-2 sm:py-0">
+              <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(0,229,255,0.1)] group-hover:border-[#00E5FF]/40 transition-colors">
+                {stat.icon}
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5 leading-snug">
+                  {stat.label}
+                </div>
+              </div>
             </div>
           ))}
-        </div>
-
-        {/* Horizontal Frosted Glass Stats Metrics Ribbon */}
-        <div className="mt-8 sm:mt-10 rounded-2xl sm:rounded-full p-6 sm:px-10 sm:py-5 bg-[#151326]/85 border border-white/10 backdrop-blur-2xl shadow-xl grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-          
-          {/* Stat 1 */}
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/30 flex items-center justify-center text-[#C084FC]">
-              <Users className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl sm:text-2xl font-black text-white">150+</div>
-              <div className="text-xs text-zinc-400 font-light">Happy Clients</div>
-            </div>
-          </div>
-
-          {/* Stat 2 */}
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-full bg-[#FF8A00]/20 border border-[#FF8A00]/30 flex items-center justify-center text-[#FF8A00]">
-              <Folder className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl sm:text-2xl font-black text-white">300+</div>
-              <div className="text-xs text-zinc-400 font-light">Projects Completed</div>
-            </div>
-          </div>
-
-          {/* Stat 3 */}
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-full bg-[#F59247]/20 border border-[#F59247]/30 flex items-center justify-center text-[#F59247]">
-              <Trophy className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl sm:text-2xl font-black text-white">5+</div>
-              <div className="text-xs text-zinc-400 font-light">Years Experience</div>
-            </div>
-          </div>
-
-          {/* Stat 4 */}
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-full bg-[#EC4899]/20 border border-[#EC4899]/30 flex items-center justify-center text-[#F472B6]">
-              <Heart className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl sm:text-2xl font-black text-white">100%</div>
-              <div className="text-xs text-zinc-400 font-light">Client Satisfaction</div>
-            </div>
-          </div>
-
-        </div>
+        </motion.div>
 
       </section>
 
