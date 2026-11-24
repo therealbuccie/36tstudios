@@ -143,24 +143,24 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080B] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
+    <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (Mirrorless Edge-to-Edge 3D Composition) */}
+      {/* 1. HERO SECTION (100% Exact Match to Neomathic Reference) */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col justify-between overflow-hidden bg-[#07080B]">
+      <section className="-mt-20 relative w-full min-h-screen bg-[#0B0A14] overflow-hidden flex flex-col justify-between pt-28 sm:pt-36 pb-14 sm:pb-20 px-4 sm:px-8">
         
-        {/* Full-Bleed Animated 3D Scene Background (Z-INDEX 0 — ALWAYS VISIBLE) */}
+        {/* Full Ultra-HD Background Scene (Animated 3D Render) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden">
           
-          {/* Animated Float & Scale Canvas */}
+          {/* Animated Float Canvas */}
           <motion.div
             animate={{ 
-              scale: [1, 1.03, 1], 
-              y: [0, -8, 0],
+              scale: [1, 1.025, 1], 
+              y: [0, -6, 0],
             }}
             transition={{ 
-              duration: 12, 
+              duration: 10, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
@@ -168,97 +168,68 @@ export default function HomePage() {
           >
             <Image
               src="/neomathic/hero-hires.jpg"
-              alt="36T Studios 3D Arch and Crystal Lake Scene"
+              alt="Neomathic 3D Arch and Crystal Scene"
               fill
-              className="object-cover object-[center_right] sm:object-[75%_center] lg:object-right-top"
+              className="object-cover object-[75%_center] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
               priority
               quality={100}
             />
           </motion.div>
 
-          {/* Animated Atmospheric Prismatic Glow Behind Arch & Cubes */}
-          <motion.div
-            animate={{
-              opacity: [0.3, 0.6, 0.3],
-              scale: [0.95, 1.1, 0.95],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-[10%] right-[5%] sm:right-[15%] w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#00E5FF]/30 via-[#C084FC]/35 to-[#F59247]/25 blur-3xl pointer-events-none mix-blend-screen"
-          />
-
-          {/* Animated Foreground Luminous Sphere Glow Pulse */}
-          <motion.div
-            animate={{
-              opacity: [0.4, 0.85, 0.4],
-              scale: [0.95, 1.2, 0.95],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-[20%] left-[25%] sm:left-[30%] w-24 sm:w-36 h-24 sm:h-36 rounded-full bg-amber-200/50 blur-2xl pointer-events-none mix-blend-screen"
-          />
-
-          {/* Smooth Left Gradient Overlay for Pristine Headline Legibility without drowning the 3D scene */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07080B]/95 via-[#07080B]/60 to-transparent w-full md:w-[60%] lg:w-[50%] z-[1]" />
-          <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#07080B]/90 to-transparent z-[1]" />
-          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#07080B] via-[#07080B]/70 to-transparent z-[1]" />
+          {/* Smooth radial gradient feathering into the background for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A14] via-[#0B0A14]/70 to-transparent w-full md:w-[60%] lg:w-[48%] z-[1]" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/70 to-transparent z-[1]" />
         </div>
 
-        {/* Content Container (Constrained to max-w-7xl, centered, z-10) */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 flex-1 flex flex-col justify-between">
-          
-          {/* Top-Right Optical Telemetry Badge */}
-          <div className="absolute top-20 sm:top-28 right-4 sm:right-8 flex flex-col items-end text-right select-none">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 border border-white/10 backdrop-blur-md text-[10px] font-mono text-zinc-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
-              <span className="tracking-widest">OPTICAL MESH // 4K 60P</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2 mt-2.5 text-[11px] font-mono text-zinc-400">
-              <span className="text-white font-bold">01</span>
-              <span className="w-4 h-[1px] bg-white/40" />
-              <span>02</span>
-              <span>03</span>
-            </div>
+        {/* Top-Right Floating Script & Pagination (Exact Match) */}
+        <div className="absolute top-28 sm:top-32 right-6 sm:right-12 hidden md:flex items-center gap-4 z-10 select-none">
+          <div className="font-script text-3xl lg:text-4xl text-right leading-[1.08] tracking-wide bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent drop-shadow-md">
+            Create<br />Build<br />Grow
           </div>
+          <div className="flex flex-col items-center gap-1.5 text-[10px] font-mono text-zinc-400">
+            <span className="text-white font-bold text-xs">01</span>
+            <div className="w-[2px] h-9 bg-white/20 relative my-0.5 rounded-full overflow-hidden">
+              <div className="w-full h-3.5 bg-white rounded-full shadow-[0_0_8px_white]" />
+            </div>
+            <span className="text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">02</span>
+            <span className="text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">03</span>
+          </div>
+        </div>
 
-          {/* Hero Left Content Block (Balanced Sizing & Spacing) */}
-          <div className="max-w-xl lg:max-w-2xl pt-2 sm:pt-4">
+        {/* Hero Left Content Block Constrained to max-w-7xl */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between">
+          
+          <div className="max-w-2xl pt-4 sm:pt-6">
             
             {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-4 sm:mb-5 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_8px_#00E5FF] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-6 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] shadow-[0_0_8px_#C084FC] animate-pulse" />
               <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-zinc-200 font-medium">
-                ✦ MEDIA // TECH // SYSTEM ENGINE
+                CREATIVE · DIGITAL · MODERN
               </span>
             </div>
 
             {/* Monolithic Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] font-sans">
-              <span className="block text-white">Software Architecture.</span>
-              <span className="block text-[#F59247] drop-shadow-[0_0_35px_rgba(245,146,71,0.35)] mt-1">
-                BUILT WITHOUT{" "}
-                <span className="text-[#00E5FF] drop-shadow-[0_0_35px_rgba(0,229,255,0.35)]">
-                  COMPROMISE.
-                </span>
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.04] font-sans">
+              <span className="block text-white">Ideas into</span>
+              <span className="block bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(192,132,252,0.4)]">
+                Amazing
+              </span>
+              <span className="block bg-gradient-to-r from-[#D8B4FE] via-[#C084FC] to-[#818CF8] bg-clip-text text-transparent">
+                Experiences.
               </span>
             </h1>
 
             {/* Subhead */}
-            <p className="mt-4 sm:mt-5 text-zinc-300 text-xs sm:text-base leading-relaxed font-light max-w-lg">
-              36T Studios builds proprietary digital platforms and partners with ambitious enterprises to engineer custom software, real-time systems, and media infrastructure.
+            <p className="mt-6 text-zinc-300 text-sm sm:text-base sm:text-lg max-w-xl leading-relaxed font-light">
+              We design, develop and create digital experiences that make brands stand out.
             </p>
 
-            {/* Action Buttons - Compact side-by-side pills */}
-            <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-row items-center gap-4 flex-wrap">
               <a
                 href="#services"
-                className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#00E5FF] text-black font-semibold text-xs sm:text-sm hover:shadow-[0_0_30px_rgba(0,229,255,0.45)] transition-all inline-flex items-center justify-center gap-2 group min-h-[44px]"
+                className="px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px] shadow-lg"
               >
                 <span>Explore Our Work</span>
                 <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
@@ -266,10 +237,10 @@ export default function HomePage() {
 
               <button
                 onClick={() => setReelModalOpen(true)}
-                className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-xs sm:text-sm backdrop-blur-xl transition-all inline-flex items-center justify-center gap-2 min-h-[44px]"
+                className="px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
               >
                 <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 fill-current text-white ml-0.5" />
+                  <Play className="w-3 h-3 fill-current text-white ml-0.5" />
                 </div>
                 <span>Watch Showreel</span>
               </button>
@@ -277,34 +248,35 @@ export default function HomePage() {
 
           </div>
 
-          {/* Floating Search Capsule (Bridging Hero and Services) */}
-          <div id="search-bar" className="w-full max-w-2xl mx-auto my-8 sm:my-10 relative z-20">
-            <div className="rounded-full p-1.5 pl-4 sm:p-2 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-2 sm:gap-3">
-              <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
+          {/* Floating Interactive Search Bar Capsule (Exact Neomathic Position) */}
+          <div id="search-bar" className="mt-12 sm:mt-16 lg:mt-20 w-full max-w-2xl mx-auto relative z-20">
+            <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 <Search className="w-4 h-4 text-zinc-400 shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search projects, systems..."
+                  placeholder="Search services, projects..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent text-xs sm:text-sm text-white placeholder-zinc-400 focus:outline-none"
+                  className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
                 />
               </div>
 
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery("")}
-                    className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 flex items-center justify-center transition-colors text-xs"
-                    title="Clear search"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                )}
-                <span className="bg-black/80 text-white text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 font-mono flex items-center gap-1.5 shrink-0 select-none">
-                  <span>2026</span>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-xs font-mono font-medium text-zinc-300 select-none">
+                  <span>2025</span>
                   <span className="text-[10px] text-zinc-500">⌄</span>
                 </span>
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("services");
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors shrink-0 shadow-sm"
+                  aria-label="Submit search"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -562,9 +534,9 @@ export default function HomePage() {
             <div className="pt-4">
               <button
                 onClick={() => setQuoteModalOpen(true)}
-                className="px-8 py-3.5 rounded-full bg-[#00E5FF] text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all inline-flex items-center gap-2 group shadow-xl"
+                className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all inline-flex items-center gap-2 group shadow-xl"
               >
-                <span>Contact Us</span>
+                <span>Get in Touch</span>
                 <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

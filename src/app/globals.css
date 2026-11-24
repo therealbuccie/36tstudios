@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.font-script {
+  font-family: var(--font-caveat), cursive, sans-serif;
+}
+
 @theme {
   --color-obsidian: #0A0A0C;
   --color-surface: #141418;

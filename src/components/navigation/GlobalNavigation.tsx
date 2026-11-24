@@ -12,15 +12,15 @@ export const GlobalNavigation = () => {
 
   const links = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/platforms" },
-    { label: "Engineering", href: "/#services" },
-    { label: "Media Lab", href: "/media" },
+    { label: "Services", href: "/#services" },
+    { label: "Projects", href: "/#projects" },
+    { label: "About", href: "/platforms" },
     { label: "Contact", href: "/contact" },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.08] bg-[#0B0A14]/80 backdrop-blur-2xl transition-all">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.08] bg-[#0B0A14]/40 backdrop-blur-md transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
           
           {/* Logo with Modern Studio Wordmark */}
@@ -57,7 +57,7 @@ export const GlobalNavigation = () => {
             })}
           </nav>
 
-          {/* Right Action Controls: Search Icon + Cyan "Get a Quote →" Pill */}
+          {/* Right Action Controls: Search Icon + White "Get a Quote →" Pill */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#search-bar"
@@ -69,7 +69,7 @@ export const GlobalNavigation = () => {
 
             <Link
               href="/contact"
-              className="px-5 py-2.5 rounded-full bg-[#00E5FF] text-black font-semibold text-xs sm:text-sm tracking-wide hover:shadow-[0_0_25px_rgba(0,229,255,0.45)] transition-all flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm tracking-wide hover:bg-zinc-100 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all flex items-center gap-1.5"
             >
               <span>Get a Quote</span>
               <ArrowRight className="w-3.5 h-3.5 text-black" />
@@ -80,7 +80,7 @@ export const GlobalNavigation = () => {
           <div className="flex md:hidden items-center gap-2">
             <Link
               href="/contact"
-              className="text-[11px] font-semibold tracking-wide px-3 py-1.5 rounded-full bg-[#00E5FF] text-black hover:shadow-[0_0_15px_rgba(0,229,255,0.3)] flex items-center gap-1"
+              className="text-[11px] font-semibold tracking-wide px-3 py-1.5 rounded-full bg-white text-black hover:bg-zinc-100 flex items-center gap-1 shadow-sm"
             >
               <span>Quote</span>
               <ArrowRight className="w-3 h-3 text-black" />

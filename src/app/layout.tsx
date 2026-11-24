@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import { GlobalNavigation } from "@/components/navigation/GlobalNavigation";
 import { StudioFooter } from "@/components/footer/StudioFooter";
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
 });
 
@@ -31,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} dark antialiased scroll-smooth`}
     >
-      <body className="min-h-screen flex flex-col bg-[#08080A] text-[#F4F4F6] selection:bg-[#F59247] selection:text-[#08080A] overflow-x-hidden font-sans">
+      <body className="min-h-screen flex flex-col bg-[#0B0A14] text-[#F4F4F6] selection:bg-[#C084FC] selection:text-black overflow-x-hidden font-sans">
         <GlobalNavigation />
         <main className="flex-1 pt-20 flex flex-col">
           {children}
