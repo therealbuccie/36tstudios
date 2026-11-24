@@ -124,16 +124,27 @@ export default function WorkPage() {
                 I&apos;VE GOT IT
               </h2>
               <p className="text-sm sm:text-base text-zinc-300 font-light italic mt-1">
-                &ldquo;Integrity has an invoice.&rdquo; — A Film by Buchi Onyechere
+                &ldquo;Integrity has an invoice.&rdquo; — A 36T Studios Original Feature
               </p>
             </div>
             
-            <button
-              onClick={() => setScreenerModalOpen(true)}
-              className="px-6 py-3 rounded-full bg-[#F59247] hover:bg-[#FF9F59] text-black text-xs font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(245,146,71,0.35)] self-start md:self-auto"
-            >
-              Request Screener Access →
-            </button>
+            <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
+              <a
+                href="https://casting.36tstudios.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-full bg-[#00E5FF]/10 hover:bg-[#00E5FF] text-[#00E5FF] hover:text-black border border-[#00E5FF]/40 text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,229,255,0.2)]"
+              >
+                <span>Casting Gateway</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <button
+                onClick={() => setScreenerModalOpen(true)}
+                className="px-6 py-3 rounded-full bg-[#F59247] hover:bg-[#FF9F59] text-black text-xs font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(245,146,71,0.35)]"
+              >
+                Request Screener Access →
+              </button>
+            </div>
           </div>
 
           {/* Main Visual Display: Dual Poster & Banner Grid */}
@@ -193,12 +204,12 @@ export default function WorkPage() {
               {/* Production Ledger Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-[#0A0A0C] border border-white/[0.06] text-xs">
                 <div>
-                  <div className="text-zinc-500 text-[10px] uppercase">DIRECTOR & WRITER</div>
-                  <div className="text-white font-semibold mt-0.5">Buchi Onyechere</div>
+                  <div className="text-zinc-500 text-[10px] uppercase">STUDIO DIRECTION</div>
+                  <div className="text-white font-semibold mt-0.5">36T Media Lab</div>
                 </div>
                 <div>
                   <div className="text-zinc-500 text-[10px] uppercase">PRODUCTION</div>
-                  <div className="text-white font-semibold mt-0.5">36T Studios / TekTrek</div>
+                  <div className="text-white font-semibold mt-0.5">36T Studios LLC</div>
                 </div>
                 <div>
                   <div className="text-zinc-500 text-[10px] uppercase">RELEASE WINDOW</div>

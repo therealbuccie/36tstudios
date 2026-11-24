@@ -8,6 +8,12 @@ import {
   ArrowUpRight, 
   ArrowRight, 
   Tv, 
+  Video,
+  Ticket,
+  Users,
+  Mail,
+  Bot,
+  Sliders,
   MessageSquare, 
   Layers, 
   X, 
@@ -21,12 +27,15 @@ import {
   Calendar,
   Send,
   Boxes,
-  Cpu
+  Cpu,
+  Globe
 } from "lucide-react";
 import { HeroSection } from "@/components/home/HeroSection";
+import { platformsData, Product } from "@/data/platformsData";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
+  const [activeSuite, setActiveSuite] = useState<string>("ALL");
   
   // Interactive Project Intake Form State
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -38,6 +47,67 @@ export default function HomePage() {
     company: "",
     message: "",
   });
+
+  const suiteTabs = [
+    { label: "ALL ECOSYSTEM", value: "ALL" },
+    { label: "Streaming & Media", value: "Streaming" },
+    { label: "Events & Ticketing", value: "Events" },
+    { label: "Communication", value: "Communication" },
+    { label: "Operations & AI", value: "Operations & AI" },
+  ];
+
+  const homepageProducts = activeSuite === "ALL"
+    ? platformsData.filter(p => p.category !== "Cinema")
+    : platformsData.filter(p => p.category === activeSuite);
+
+  const getProductIcon = (id: string) => {
+    switch (id) {
+      case "jstreams-tv": return Tv;
+      case "jstreams-studio": return Video;
+      case "jevents": return Ticket;
+      case "jconference": return Users;
+      case "whisppr": return MessageSquare;
+      case "jposta": return Mail;
+      case "jai": return Bot;
+      case "jcontrol": return Sliders;
+      default: return Cpu;
+    }
+  };
+
+  const getStatusBadge = (status: Product["status"]) => {
+    switch (status) {
+      case "Live":
+        return {
+          label: "LIVE",
+          classes: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+          dot: "bg-emerald-400",
+        };
+      case "In Development":
+        return {
+          label: "IN DEVELOPMENT",
+          classes: "text-[#FF8A00] bg-[#FF8A00]/10 border-[#FF8A00]/30",
+          dot: "bg-[#FF8A00]",
+        };
+      case "Beta":
+        return {
+          label: "PRIVATE BLUEPRINT",
+          classes: "text-[#00E5FF] bg-[#00E5FF]/10 border-[#00E5FF]/30",
+          dot: "bg-[#00E5FF]",
+        };
+      case "Internal System":
+        return {
+          label: "INTERNAL SYSTEM",
+          classes: "text-zinc-400 bg-white/[0.04] border-white/[0.12]",
+          dot: "bg-zinc-400",
+        };
+      default:
+        return {
+          label: status,
+          classes: "text-zinc-400 bg-white/[0.04] border-white/[0.12]",
+          dot: "bg-zinc-400",
+        };
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,13 +129,13 @@ export default function HomePage() {
       <HeroSection />
 
       {/* ======================================================== */}
-      {/* 2. SECTION 1: PROPRIETARY APPLICATIONS (Ready to License)*/}
+      {/* 2. SECTION 1: PROPRIETARY PLATFORMS (J-Platforms Suite) */}
       {/* ======================================================== */}
       <section id="products" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-16 text-center sm:text-left">
+        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12 text-center sm:text-left">
           <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
             <Cpu className="w-3.5 h-3.5 text-[#00E5FF]" />
-            <span>01 // In-House Intellectual Property</span>
+            <span>01 // J-PLATFORMS PROPRIETARY SUITE</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
             <div>
@@ -73,138 +143,128 @@ export default function HomePage() {
                 Proprietary Platforms
               </h2>
               <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
-                In-house software available for enterprise licensing, direct SDK integration, and turnkey deployment.
+                In-house software available for enterprise licensing, direct SDK integration, and turnkey production deployment.
               </p>
             </div>
             <Link
               href="/platforms"
               className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors pt-2 sm:pt-0"
             >
-              <span>Explore Technical Whitepapers</span>
+              <span>Explore Complete Architecture Directory</span>
               <ArrowRight className="w-4 h-4 text-[#00E5FF]" />
             </Link>
           </div>
         </div>
 
-        {/* 3 Core Product Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-          
-          {/* Product 1: Whisppr */}
-          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
-            <div>
-              <div className="flex items-center justify-between mb-5 sm:mb-6">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
-                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30">
-                  Available for License / SDK
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Whisppr</h3>
-              <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
-                Edge-native encrypted voice and video calling architecture powered by low-latency WebRTC and hardware-accelerated codecs.
-              </p>
-            </div>
+        {/* Suite Category Tabs */}
+        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-none">
+          {suiteTabs.map((tab) => (
+            <button
+              key={tab.value}
+              onClick={() => setActiveSuite(tab.value)}
+              className={`px-4 py-2 rounded-full text-xs font-mono whitespace-nowrap transition-all min-h-[38px] ${
+                activeSuite === tab.value
+                  ? "bg-[#00E5FF] text-black font-bold shadow-[0_0_15px_rgba(0,229,255,0.4)]"
+                  : "bg-[#101216] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Latency</span>
-                  <span className="text-white font-semibold">&lt; 12ms Edge</span>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Encryption</span>
-                  <span className="text-emerald-400 font-semibold">AES-256 GCM</span>
-                </div>
-              </div>
-              <a 
-                href="#contact"
-                onClick={() => setFormScope("license")}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform py-1"
+        {/* Dynamic J-Platforms Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {homepageProducts.map((product) => {
+            const Icon = getProductIcon(product.id);
+            const badge = getStatusBadge(product.status);
+
+            return (
+              <div
+                key={product.id}
+                className="group rounded-2xl sm:rounded-3xl p-6 sm:p-7 bg-[#101216] border border-white/[0.08] hover:border-white/25 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.1)]"
               >
-                <span>Request SDK Access</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
+                <div>
+                  <div className="flex items-center justify-between mb-4 sm:mb-5">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#00E5FF] flex items-center justify-center group-hover:scale-105 transition-transform">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </div>
+                    <span className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full border ${badge.classes}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${badge.dot} animate-pulse`} />
+                      {badge.label}
+                    </span>
+                  </div>
 
-          {/* Product 2: JStream */}
-          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#FF8A00]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(255,138,0,0.12)]">
-            <div>
-              <div className="flex items-center justify-between mb-5 sm:mb-6">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FF8A00]/10 border border-[#FF8A00]/20 flex items-center justify-center text-[#FF8A00]">
-                  <Tv className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-widest mb-1">
+                    {product.suite || `${product.category} ENGINE`}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5 group-hover:text-[#00E5FF] transition-colors">
+                    {product.name}
+                  </h3>
+                  <div className="text-xs font-medium text-[#FF8A00] mb-2.5">
+                    {product.tagline}
+                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-light mb-5">
+                    {product.description}
+                  </p>
                 </div>
-                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#FF8A00]/10 text-[#FF8A00] border border-[#FF8A00]/30">
-                  Enterprise Infrastructure
-                </span>
+
+                <div className="space-y-4 pt-4 border-t border-white/[0.06]">
+                  {/* Metric Chips */}
+                  {product.metrics && (
+                    <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
+                      {product.metrics.map((m, idx) => (
+                        <div key={idx} className="p-2 rounded-lg bg-black/40 border border-white/[0.04]">
+                          <span className="text-zinc-500 block text-[9px] uppercase">{m.label}</span>
+                          <span className="text-white font-semibold text-[11px] truncate block">{m.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Endpoint or Action Links */}
+                  <div className="flex items-center justify-between pt-1">
+                    {product.url ? (
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] hover:underline"
+                      >
+                        <Globe className="w-3.5 h-3.5" />
+                        <span>Launch {new URL(product.url).hostname}</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    ) : (
+                      <span className="text-xs font-mono text-zinc-500">
+                        {product.status === "Internal System" ? "Internal Operations" : "Private Protocol Mesh"}
+                      </span>
+                    )}
+
+                    <a
+                      href="#contact"
+                      onClick={() => setFormScope("license")}
+                      className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+                    >
+                      Inquire →
+                    </a>
+                  </div>
+                </div>
+
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">JStream</h3>
-              <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
-                Distributed media streaming and content delivery core designed for sub-second live ingestion, multi-region relays, and client-branded playback.
-              </p>
-            </div>
+            );
+          })}
+        </div>
 
-            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Ingestion</span>
-                  <span className="text-white font-semibold">Sub-Second</span>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Architecture</span>
-                  <span className="text-[#FF8A00] font-semibold">Multi-Region Edge</span>
-                </div>
-              </div>
-              <a 
-                href="#contact"
-                onClick={() => setFormScope("license")}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#FF8A00] group-hover:translate-x-1 transition-transform py-1"
-              >
-                <span>Inquire for Deployment</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Product 3: jOS */}
-          <div className="group rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#101216] border border-white/[0.08] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.12)]">
-            <div>
-              <div className="flex items-center justify-between mb-5 sm:mb-6">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
-                  <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <span className="text-[10px] sm:text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-zinc-300 border border-white/[0.12]">
-                  Core Research
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">jOS</h3>
-              <p className="text-sm text-zinc-400 leading-relaxed font-light mb-6">
-                Experimental planar mobile operating system shell. Replaces rigid application silos with spatial fluid physics and continuous interaction canvases.
-              </p>
-            </div>
-
-            <div className="space-y-4 pt-5 sm:pt-6 border-t border-white/[0.06]">
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Interaction</span>
-                  <span className="text-white font-semibold">Planar Spatial</span>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-black/40 border border-white/[0.04]">
-                  <span className="text-zinc-500 block text-[9px] sm:text-[10px]">Kernel</span>
-                  <span className="text-[#00E5FF] font-semibold">Micro-Engine</span>
-                </div>
-              </div>
-              <Link 
-                href="/platforms#jos"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] group-hover:translate-x-1 transition-transform py-1"
-              >
-                <span>Read Research Paper</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
+        {/* Bottom Directory Teaser */}
+        <div className="mt-10 text-center">
+          <Link
+            href="/platforms"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] text-xs font-mono text-zinc-300 hover:text-white transition-all"
+          >
+            <Layers className="w-3.5 h-3.5 text-[#00E5FF]" />
+            <span>View Complete 36T Platforms Specification &amp; Taxonomy Directory →</span>
+          </Link>
         </div>
       </section>
 
@@ -393,6 +453,15 @@ export default function HomePage() {
                 <Play className="w-3.5 h-3.5 fill-current text-black" />
                 <span>Watch Showreel</span>
               </button>
+              <a
+                href="https://casting.36tstudios.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-[#00E5FF]/10 hover:bg-[#00E5FF] border border-[#00E5FF]/40 text-[#00E5FF] hover:text-black text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all min-h-[44px]"
+              >
+                <span>Casting Portal</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
               <Link
                 href="/work"
                 className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-black/70 hover:bg-black border border-white/20 text-white text-xs font-bold tracking-wider uppercase flex items-center justify-center transition-colors min-h-[44px]"
