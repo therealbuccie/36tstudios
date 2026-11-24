@@ -74,6 +74,42 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Neomathic Twilight Glassmorphism */
+.neomathic-glass {
+  background: linear-gradient(135deg, rgba(25, 22, 42, 0.65) 0%, rgba(13, 11, 24, 0.8) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.neomathic-card {
+  background: linear-gradient(180deg, rgba(30, 26, 52, 0.5) 0%, rgba(16, 14, 30, 0.75) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.neomathic-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.neomathic-glow-purple {
+  box-shadow: 0 0 35px rgba(192, 132, 252, 0.35);
+}
+
+.neomathic-glow-cyan {
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.35);
+}
+
+.neomathic-glow-gold {
+  box-shadow: 0 0 35px rgba(245, 146, 71, 0.35);
+}
+
 /* Radiant aura color splashes */
 .radial-splash-orange {
   background: radial-gradient(circle at 50% 50%, rgba(245, 146, 71, 0.14) 0%, rgba(245, 146, 71, 0.03) 50%, transparent 75%);

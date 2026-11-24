@@ -5,671 +5,483 @@ import Image from "next/image";
 import Link from "next/link";
 import { 
   Play, 
-  ArrowUpRight, 
   ArrowRight, 
-  Tv, 
-  Video,
-  Ticket,
-  Users,
-  Mail,
-  Bot,
-  Sliders,
-  MessageSquare, 
-  Layers, 
+  ArrowUpRight, 
+  Search, 
+  Users, 
+  Folder, 
+  Trophy, 
+  Heart, 
   X, 
-  Clapperboard, 
-  Code2, 
-  Server, 
-  Sparkles, 
-  ShieldCheck, 
-  Activity, 
   CheckCircle2, 
-  Calendar,
   Send,
-  Boxes,
-  Cpu,
-  Globe
+  Sparkles,
+  ExternalLink
 } from "lucide-react";
-import { HeroSection } from "@/components/home/HeroSection";
-import { platformsData, Product } from "@/data/platformsData";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
-  const [activeSuite, setActiveSuite] = useState<string>("ALL");
-  
-  // Interactive Project Intake Form State
+  const [searchQuery, setSearchQuery] = useState("");
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formScope, setFormScope] = useState<"custom" | "license" | "design">("custom");
-  const [formTimeline, setFormTimeline] = useState<"q1" | "q2" | "flexible">("q1");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
+    service: "Web Development",
     message: "",
   });
 
-  const suiteTabs = [
-    { label: "ALL ECOSYSTEM", value: "ALL" },
-    { label: "Streaming & Media", value: "Streaming" },
-    { label: "Events & Ticketing", value: "Events" },
-    { label: "Communication", value: "Communication" },
-    { label: "Operations & AI", value: "Operations & AI" },
+  const services = [
+    {
+      id: "design",
+      title: "Graphic Design",
+      subtitle: "Logos, Branding, Social Media",
+      image: "/neomathic/product-laptop.png",
+      category: "Creative",
+      details: "Brand architecture, vector marks, design systems, and modern digital identity.",
+      link: "/platforms",
+    },
+    {
+      id: "video",
+      title: "Video Production",
+      subtitle: "Shooting, Editing, Motion Graphics",
+      image: "/neomathic/product-camera.png",
+      category: "Media",
+      details: "Cinematic feature films, broadcast streaming, multi-camera direction, and post-production.",
+      link: "/work",
+    },
+    {
+      id: "web",
+      title: "Web Development",
+      subtitle: "Modern, Responsive Websites",
+      image: "/neomathic/product-code.png",
+      category: "Engineering",
+      details: "High-performance Next.js platforms, WebRTC real-time systems, and scalable cloud backends.",
+      link: "/platforms",
+    },
+    {
+      id: "photography",
+      title: "Photography",
+      subtitle: "Events, Portraits, Commercial",
+      image: "/neomathic/product-photo.png",
+      category: "Production",
+      details: "Editorial portraiture, commercial campaigns, live event coverage, and casting pipelines.",
+      link: "https://casting.36tstudios.org",
+    },
   ];
 
-  const homepageProducts = activeSuite === "ALL"
-    ? platformsData.filter(p => p.category !== "Cinema")
-    : platformsData.filter(p => p.category === activeSuite);
+  const projects = [
+    {
+      id: "proj-photo",
+      title: "Editorial Production",
+      tag: "Photography",
+      image: "/neomathic/project-photo.png",
+      link: "/work",
+    },
+    {
+      id: "proj-video",
+      title: "Live Broadcast Studio",
+      tag: "Video Production",
+      image: "/neomathic/project-video.png",
+      link: "https://studio.jstreams.pro",
+    },
+    {
+      id: "proj-web",
+      title: "Enterprise Web Core",
+      tag: "Web Development",
+      image: "/neomathic/project-laptop.png",
+      link: "https://jstreams.pro",
+    },
+  ];
 
-  const getProductIcon = (id: string) => {
-    switch (id) {
-      case "jstreams-tv": return Tv;
-      case "jstreams-studio": return Video;
-      case "jevents": return Ticket;
-      case "jconference": return Users;
-      case "whisppr": return MessageSquare;
-      case "jposta": return Mail;
-      case "jai": return Bot;
-      case "jcontrol": return Sliders;
-      default: return Cpu;
-    }
-  };
+  const filteredServices = searchQuery.trim() === ""
+    ? services
+    : services.filter(s => 
+        s.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        s.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
-  const getStatusBadge = (status: Product["status"]) => {
-    switch (status) {
-      case "Live":
-        return {
-          label: "LIVE",
-          classes: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
-          dot: "bg-emerald-400",
-        };
-      case "In Development":
-        return {
-          label: "IN DEVELOPMENT",
-          classes: "text-[#FF8A00] bg-[#FF8A00]/10 border-[#FF8A00]/30",
-          dot: "bg-[#FF8A00]",
-        };
-      case "Beta":
-        return {
-          label: "PRIVATE BLUEPRINT",
-          classes: "text-[#00E5FF] bg-[#00E5FF]/10 border-[#00E5FF]/30",
-          dot: "bg-[#00E5FF]",
-        };
-      case "Internal System":
-        return {
-          label: "INTERNAL SYSTEM",
-          classes: "text-zinc-400 bg-white/[0.04] border-white/[0.12]",
-          dot: "bg-zinc-400",
-        };
-      default:
-        return {
-          label: status,
-          classes: "text-zinc-400 bg-white/[0.04] border-white/[0.12]",
-          dot: "bg-zinc-400",
-        };
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
     setFormSubmitted(true);
   };
 
   return (
-    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] relative overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
-      {/* Ambient Color Splashes: Cold Electric Cyan (#00E5FF) & Warm Solar Amber (#FF8A00) */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[340px] xs:w-[600px] sm:w-[1000px] h-[350px] sm:h-[520px] bg-gradient-to-tr from-[#00E5FF]/15 via-[#00D4F0]/10 to-[#FF8A00]/12 rounded-full blur-[120px] sm:blur-[150px] pointer-events-none -z-10" />
-      <div className="absolute top-[1100px] -left-48 w-[400px] sm:w-[550px] h-[400px] sm:h-[550px] bg-[#00E5FF]/8 rounded-full blur-[140px] sm:blur-[160px] pointer-events-none -z-10" />
-      <div className="absolute top-[2300px] -right-48 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#FF8A00]/8 rounded-full blur-[140px] sm:blur-[170px] pointer-events-none -z-10" />
+      {/* Ambient Lighting Sprites */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[700px] bg-gradient-to-b from-[#7C3AED]/20 via-[#C084FC]/10 to-transparent blur-[160px] -z-10" />
+      <div className="pointer-events-none absolute top-[900px] -left-48 w-[600px] h-[600px] bg-[#00E5FF]/10 blur-[170px] -z-10" />
+      <div className="pointer-events-none absolute top-[1800px] -right-48 w-[700px] h-[700px] bg-[#F59247]/10 blur-[180px] -z-10" />
 
       {/* ======================================================== */}
-      {/* 1. HERO COMPONENT: Software Architecture & Product Foundry */}
+      {/* 1. HERO SECTION (100% Neomathic 3D Composition)          */}
       {/* ======================================================== */}
-      <HeroSection />
+      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-[90vh] flex flex-col justify-between">
+        
+        {/* Background Visual Scene: Glowing 3D Arch & Cubes */}
+        <div className="absolute top-12 right-0 sm:right-4 w-[340px] xs:w-[480px] sm:w-[620px] md:w-[720px] h-[360px] xs:h-[450px] sm:h-[560px] pointer-events-none select-none -z-10 opacity-90 sm:opacity-100">
+          <Image
+            src="/neomathic/hero-arch.png"
+            alt="3D Glowing Portal Archway"
+            fill
+            className="object-contain object-top drop-shadow-[0_20px_50px_rgba(192,132,252,0.3)] animate-in fade-in zoom-in-95 duration-1000"
+            priority
+          />
+        </div>
 
-      {/* ======================================================== */}
-      {/* 2. SECTION 1: PROPRIETARY PLATFORMS (J-Platforms Suite) */}
-      {/* ======================================================== */}
-      <section id="products" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
-            <Cpu className="w-3.5 h-3.5 text-[#00E5FF]" />
-            <span>01 // J-PLATFORMS PROPRIETARY SUITE</span>
-          </div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
-            <div>
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
-                Proprietary Platforms
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
-                In-house software available for enterprise licensing, direct SDK integration, and turnkey production deployment.
-              </p>
-            </div>
-            <Link
-              href="/platforms"
-              className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors pt-2 sm:pt-0"
-            >
-              <span>Explore Complete Architecture Directory</span>
-              <ArrowRight className="w-4 h-4 text-[#00E5FF]" />
-            </Link>
+        {/* Top Floating Script Text & Pagination Accent */}
+        <div className="absolute top-28 sm:top-36 right-6 sm:right-12 hidden md:flex flex-col items-end text-right z-10 select-none">
+          <span className="font-serif italic text-2xl lg:text-3xl tracking-wide bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent drop-shadow-sm">
+            Create<br />Build<br />Grow
+          </span>
+          <div className="flex items-center gap-2 mt-4 text-[11px] font-mono text-zinc-400">
+            <span className="text-white font-bold">01</span>
+            <span className="w-4 h-[1px] bg-white/40" />
+            <span>02</span>
+            <span>03</span>
           </div>
         </div>
 
-        {/* Suite Category Tabs */}
-        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-none">
-          {suiteTabs.map((tab) => (
+        {/* Hero Left Content Block */}
+        <div className="max-w-2xl relative z-10 pt-4 sm:pt-10">
+          
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl mb-6 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] shadow-[0_0_8px_#C084FC] animate-pulse" />
+            <span className="font-mono text-[10px] xs:text-xs uppercase tracking-widest text-zinc-200 font-medium">
+              CREATIVE · DIGITAL · MODERN
+            </span>
+          </div>
+
+          {/* Monolithic Headline */}
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-[5.25rem] font-black tracking-tight leading-[1.04] font-sans">
+            <span className="block text-white">Ideas into</span>
+            <span className="block bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(192,132,252,0.4)]">
+              Amazing
+            </span>
+            <span className="block bg-gradient-to-r from-[#D8B4FE] via-[#C084FC] to-[#818CF8] bg-clip-text text-transparent">
+              Experiences.
+            </span>
+          </h1>
+
+          {/* Subhead */}
+          <p className="mt-6 text-zinc-300 text-sm xs:text-base sm:text-lg max-w-xl leading-relaxed font-light">
+            We design, develop and create digital experiences that make brands stand out.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-4">
+            <a
+              href="#services"
+              className="px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px]"
+            >
+              <span>Explore Our Work</span>
+              <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
+            </a>
+
             <button
-              key={tab.value}
-              onClick={() => setActiveSuite(tab.value)}
-              className={`px-4 py-2 rounded-full text-xs font-mono whitespace-nowrap transition-all min-h-[38px] ${
-                activeSuite === tab.value
-                  ? "bg-[#00E5FF] text-black font-bold shadow-[0_0_15px_rgba(0,229,255,0.4)]"
-                  : "bg-[#101216] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20"
-              }`}
+              onClick={() => setReelModalOpen(true)}
+              className="px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
             >
-              {tab.label}
+              <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                <Play className="w-3 h-3 fill-current text-white ml-0.5" />
+              </div>
+              <span>Watch Showreel</span>
             </button>
-          ))}
-        </div>
-
-        {/* Dynamic J-Platforms Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {homepageProducts.map((product) => {
-            const Icon = getProductIcon(product.id);
-            const badge = getStatusBadge(product.status);
-
-            return (
-              <div
-                key={product.id}
-                className="group rounded-2xl sm:rounded-3xl p-6 sm:p-7 bg-[#101216] border border-white/[0.08] hover:border-white/25 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(0,229,255,0.1)]"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4 sm:mb-5">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#00E5FF] flex items-center justify-center group-hover:scale-105 transition-transform">
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </div>
-                    <span className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full border ${badge.classes}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${badge.dot} animate-pulse`} />
-                      {badge.label}
-                    </span>
-                  </div>
-
-                  <div className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-widest mb-1">
-                    {product.suite || `${product.category} ENGINE`}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5 group-hover:text-[#00E5FF] transition-colors">
-                    {product.name}
-                  </h3>
-                  <div className="text-xs font-medium text-[#FF8A00] mb-2.5">
-                    {product.tagline}
-                  </div>
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-light mb-5">
-                    {product.description}
-                  </p>
-                </div>
-
-                <div className="space-y-4 pt-4 border-t border-white/[0.06]">
-                  {/* Metric Chips */}
-                  {product.metrics && (
-                    <div className="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
-                      {product.metrics.map((m, idx) => (
-                        <div key={idx} className="p-2 rounded-lg bg-black/40 border border-white/[0.04]">
-                          <span className="text-zinc-500 block text-[9px] uppercase">{m.label}</span>
-                          <span className="text-white font-semibold text-[11px] truncate block">{m.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Endpoint or Action Links */}
-                  <div className="flex items-center justify-between pt-1">
-                    {product.url ? (
-                      <a
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#00E5FF] hover:underline"
-                      >
-                        <Globe className="w-3.5 h-3.5" />
-                        <span>Launch {new URL(product.url).hostname}</span>
-                        <ArrowUpRight className="w-3 h-3" />
-                      </a>
-                    ) : (
-                      <span className="text-xs font-mono text-zinc-500">
-                        {product.status === "Internal System" ? "Internal Operations" : "Private Protocol Mesh"}
-                      </span>
-                    )}
-
-                    <a
-                      href="#contact"
-                      onClick={() => setFormScope("license")}
-                      className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
-                    >
-                      Inquire →
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Directory Teaser */}
-        <div className="mt-10 text-center">
-          <Link
-            href="/platforms"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] text-xs font-mono text-zinc-300 hover:text-white transition-all"
-          >
-            <Layers className="w-3.5 h-3.5 text-[#00E5FF]" />
-            <span>View Complete 36T Platforms Specification &amp; Taxonomy Directory →</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* 3. SECTION 2: CLIENT ENGINEERING ("Build With Us")       */}
-      {/* ======================================================== */}
-      <section id="engineering" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-3 sm:space-y-4 mb-12 sm:mb-14 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FF8A00]">
-            <Code2 className="w-3.5 h-3.5 text-[#FF8A00]" />
-            <span>02 // Client Services</span>
-          </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
-            Client Engineering &amp; Ventures
-          </h2>
-          <p className="text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
-            We partner with visionary founders and enterprises to architect, design, and deploy mission-critical software.
-          </p>
-        </div>
-
-        {/* 3 Service Modules */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
-          
-          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
-            <div className="text-xs font-mono text-[#00E5FF] font-semibold">
-              01 // FULL-STACK FOUNDRY
-            </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white">Complete Platform Build</h3>
-            <p className="text-sm text-zinc-400 leading-relaxed font-light">
-              Turnkey engineering from wireframes and technical scoping to cloud deployment, automated CI/CD pipelines, and app store submissions.
-            </p>
-            <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>iOS / Android Native &amp; Cross-Platform</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>TypeScript / Rust / Next.js Full-Stack</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>SOC-2 Compliant Cloud Architecture</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
-            <div className="text-xs font-mono text-[#FF8A00] font-semibold">
-              02 // SYSTEMS &amp; INFRASTRUCTURE
-            </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white">Real-Time Infrastructure</h3>
-            <p className="text-sm text-zinc-400 leading-relaxed font-light">
-              Custom low-latency WebRTC pipelines, distributed media ingestion, edge caching, and scalable websocket microservices.
-            </p>
-            <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
-                <span>Sub-20ms Audio/Video Transport</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
-                <span>Edge Compute &amp; Serverless Workflows</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A00] shrink-0" />
-                <span>Autonomous AI Agent Handover</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-4 hover:border-white/20 transition-all">
-            <div className="text-xs font-mono text-[#00E5FF] font-semibold">
-              03 // PRODUCT DESIGN
-            </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white">Design Systems &amp; Brand</h3>
-            <p className="text-sm text-zinc-400 leading-relaxed font-light">
-              Monolithic vector marks, custom typography scales, high-density telemetry interfaces, and tactile design systems.
-            </p>
-            <ul className="space-y-2 pt-2 text-xs font-mono text-zinc-400">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>Swiss-German Typographic Hierarchy</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>Framer / Figma / Code Connect Tokens</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shrink-0" />
-                <span>Hardware Chassis &amp; Industrial Mockups</span>
-              </li>
-            </ul>
           </div>
 
         </div>
 
-        {/* Client Booking CTA Banner */}
-        <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/[0.12] flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
-          <div>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#FF8A00] block mb-1">
-              Commission Availability
-            </span>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
-              Have a product in mind? We are currently booking Q1/Q2 client commissions.
-            </h3>
-          </div>
-          <a
-            href="#contact"
-            className="w-full md:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-zinc-200 text-black text-sm font-bold tracking-wide transition-all whitespace-nowrap flex items-center justify-center gap-2 shrink-0 shadow-xl min-h-[44px]"
-          >
-            <span>Schedule Consultation</span>
-            <ArrowRight className="w-4 h-4 text-black" />
-          </a>
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* 4. SECTION 3: NARRATIVE & CREATIVE LAB (Film Division)   */}
-      {/* ======================================================== */}
-      <section id="media" className="px-4 sm:px-6 py-16 sm:py-28 max-w-6xl mx-auto border-t border-white/[0.08] relative">
-        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
-            <Clapperboard className="w-3.5 h-3.5 text-[#00E5FF]" />
-            <span>03 // Narrative &amp; Cinema Division</span>
-          </div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
-            <div>
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-sans">
-                Narrative &amp; Visual Media
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl font-light">
-                Beyond software, we produce original cinema. 36T Media develops character-driven feature films for international theatrical and streaming distribution.
-              </p>
-            </div>
-            <Link
-              href="/work"
-              className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-[#00E5FF] transition-colors pt-2 sm:pt-0"
-            >
-              <span>Explore Anonymized Slate</span>
-              <ArrowRight className="w-4 h-4 text-[#00E5FF]" />
-            </Link>
-          </div>
-        </div>
-
-        {/* 16:9 Cinematic Video Frame with Anonymized Release Slate */}
-        <div className="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/[0.12] hover:border-[#00E5FF]/40 bg-[#101216] aspect-[16/11] xs:aspect-[16/9] sm:aspect-[2.39/1] flex flex-col justify-between p-4 xs:p-6 sm:p-10 shadow-2xl transition-all duration-500">
-          
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/movies/ive-got-it/poster-landscape.jpg"
-              alt="36T Media Narrative Slate"
-              fill
-              className="object-cover object-center opacity-65 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30" />
-          </div>
-
-          <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-            <span className="px-2.5 sm:px-3 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md truncate max-w-[260px] xs:max-w-none">
-              ORIGINAL THEATRICAL RELEASE SLATE // DECEMBER 2026
-            </span>
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#00E5FF]/20 text-[#00E5FF] border border-[#00E5FF]/40 backdrop-blur-md font-semibold">
-              IN PRODUCTION
-            </span>
-          </div>
-
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 pt-8 sm:pt-12">
-            <div>
-              <span className="text-[10px] sm:text-xs font-mono tracking-widest uppercase text-[#FF8A00] block mb-1">
-                A 36T Media Original
-              </span>
-              <h3 className="text-2xl xs:text-3xl sm:text-5xl font-black text-white tracking-tight">
-                I&apos;VE GOT IT
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-300 font-light mt-1 italic">
-                &ldquo;Integrity has an invoice.&rdquo;
-              </p>
-            </div>
-
-            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-              <button
-                onClick={() => setReelModalOpen(true)}
-                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 min-h-[44px]"
-              >
-                <Play className="w-3.5 h-3.5 fill-current text-black" />
-                <span>Watch Showreel</span>
-              </button>
-              <a
-                href="https://casting.36tstudios.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-[#00E5FF]/10 hover:bg-[#00E5FF] border border-[#00E5FF]/40 text-[#00E5FF] hover:text-black text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all min-h-[44px]"
-              >
-                <span>Casting Portal</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-              <Link
-                href="/work"
-                className="w-full xs:w-auto px-5 sm:px-6 py-3 rounded-full bg-black/70 hover:bg-black border border-white/20 text-white text-xs font-bold tracking-wider uppercase flex items-center justify-center transition-colors min-h-[44px]"
-              >
-                View Slate
-              </Link>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* 5. PROJECT INTAKE FORM: MetaLab & ustwo-Style Foundry Form*/}
-      {/* ======================================================== */}
-      <section id="contact" className="px-4 sm:px-6 py-16 sm:py-28 max-w-4xl mx-auto border-t border-white/[0.08] relative">
-        <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-[11px] sm:text-xs font-mono text-[#00E5FF]">
-            <Sparkles className="w-3 h-3" />
-            <span>Direct Foundry Intake</span>
-          </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-5xl font-bold tracking-tight text-white font-sans">
-            Start a Project
-          </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 font-light max-w-lg mx-auto px-2">
-            Tell us about your upcoming software build, platform licensing requirements, or custom engineering commission.
-          </p>
-        </div>
-
-        {formSubmitted ? (
-          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#101216] border border-[#00E5FF]/40 text-center space-y-4 shadow-[0_0_50px_rgba(0,229,255,0.15)] animate-in fade-in duration-300">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] mx-auto">
-              <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">Project Brief Dispatched</h3>
-            <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
-              Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. An engineering director from our Delaware office will review your scope and respond within 24 hours.
-            </p>
-            <div className="pt-3">
-              <button
-                onClick={() => setFormSubmitted(false)}
-                className="text-xs font-mono text-zinc-400 hover:text-white underline underline-offset-4 py-2"
-              >
-                Submit another project inquiry
-              </button>
-            </div>
-          </div>
-        ) : (
-          <form 
-            onSubmit={handleSubmit}
-            className="p-5 xs:p-7 sm:p-12 rounded-2xl sm:rounded-3xl bg-[#101216] border border-white/[0.08] space-y-6 sm:space-y-8 shadow-2xl"
-          >
-            {/* Scope Selection Pills */}
-            <div className="space-y-3">
-              <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
-                01 // Select Project Scope
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
-                <button
-                  type="button"
-                  onClick={() => setFormScope("custom")}
-                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
-                    formScope === "custom"
-                      ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_15px_rgba(0,229,255,0.2)]"
-                      : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  <span className="block font-semibold text-white mb-0.5">Build Custom Software</span>
-                  <span className="text-[10px] text-zinc-400">Turnkey engineering</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormScope("license")}
-                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
-                    formScope === "license"
-                      ? "bg-[#FF8A00]/10 border-[#FF8A00] text-white shadow-[0_0_15px_rgba(255,138,0,0.2)]"
-                      : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  <span className="block font-semibold text-white mb-0.5">License Platform IP</span>
-                  <span className="text-[10px] text-zinc-400">Whisppr / JStream SDK</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormScope("design")}
-                  className={`p-3.5 rounded-xl sm:rounded-2xl text-left border text-xs font-mono transition-all min-h-[56px] ${
-                    formScope === "design"
-                      ? "bg-[#00E5FF]/10 border-[#00E5FF] text-white shadow-[0_0_15px_rgba(0,229,255,0.2)]"
-                      : "bg-white/[0.02] border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  <span className="block font-semibold text-white mb-0.5">Design Systems &amp; Brand</span>
-                  <span className="text-[10px] text-zinc-400">High-density interfaces</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Client Name & Work Email - Inputs with 16px (text-base) on mobile to prevent iOS Safari auto-zoom */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div className="space-y-1.5 sm:space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
-                  Client / Lead Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Alex Mercer"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
-                />
-              </div>
-
-              <div className="space-y-1.5 sm:space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
-                  Work Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="alex@enterprise.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors"
-                />
-              </div>
-            </div>
-
-            {/* Timeline Selection */}
-            <div className="space-y-3">
-              <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
-                02 // Target Timeline
-              </label>
-              <div className="grid grid-cols-1 xs:grid-cols-3 gap-2.5 sm:gap-3 text-xs font-mono">
-                <button
-                  type="button"
-                  onClick={() => setFormTimeline("q1")}
-                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
-                    formTimeline === "q1"
-                      ? "bg-white/10 border-white text-white font-semibold"
-                      : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  Q1 2026 (Immediate)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFormTimeline("q2")}
-                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
-                    formTimeline === "q2"
-                      ? "bg-white/10 border-white text-white font-semibold"
-                      : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  Q2 2026 (1-3 Mos)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFormTimeline("flexible")}
-                  className={`py-3 px-3 rounded-xl border text-center transition-all ${
-                    formTimeline === "flexible"
-                      ? "bg-white/10 border-white text-white font-semibold"
-                      : "bg-black/30 border-white/[0.08] text-zinc-400 hover:border-white/20"
-                  }`}
-                >
-                  Exploration
-                </button>
-              </div>
-            </div>
-
-            {/* Project Overview Message */}
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">
-                03 // Project Scope &amp; Technical Requirements
-              </label>
-              <textarea
-                rows={4}
-                placeholder="Describe your product architecture, target platforms, or licensing requirements..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-black/40 border border-white/[0.1] text-white text-base sm:text-sm focus:outline-none focus:border-[#00E5FF] transition-colors resize-none"
+        {/* Floating Interactive Search Bar Capsule (Positioned at fold) */}
+        <div id="search-bar" className="mt-14 sm:mt-20 w-full max-w-2xl mx-auto relative z-20">
+          <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/85 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <Search className="w-4 h-4 text-zinc-400 shrink-0" />
+              <input
+                type="text"
+                placeholder="Search services, projects, platforms..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
               />
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full py-4 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2 min-h-[48px] active:scale-[0.99]"
-            >
-              <Send className="w-4 h-4 text-black" />
-              <span>Submit Project Brief</span>
-            </button>
-          </form>
-        )}
+            <div className="flex items-center gap-2">
+              <span className="hidden xs:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-xs font-mono font-medium text-zinc-300">
+                <span>2026</span>
+                <span className="text-[10px] text-zinc-500">⌄</span>
+              </span>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("services");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors shrink-0"
+                aria-label="Submit search"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
       </section>
+
+      {/* ======================================================== */}
+      {/* 2. SECTION: "OUR SERVICES / WHAT WE DO"                   */}
+      {/* ======================================================== */}
+      <section id="services" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 block mb-1">
+              OUR SERVICES
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+              What <span className="text-[#D8B4FE]">We Do</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:max-w-md">
+            <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+              From creative design to powerful digital solutions, we help your ideas come to life.
+            </p>
+            <Link
+              href="/platforms"
+              className="px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white tracking-wide transition-all whitespace-nowrap self-start sm:self-auto flex items-center gap-1.5 backdrop-blur-sm"
+            >
+              <span>View All</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* 4 Iconic 3D Glass Product Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {filteredServices.map((service) => (
+            <div
+              key={service.id}
+              className="group rounded-3xl p-6 bg-gradient-to-b from-[#1C1833]/70 to-[#120F24]/85 border border-white/10 hover:border-[#C084FC]/50 transition-all duration-500 backdrop-blur-2xl flex flex-col justify-between relative overflow-hidden shadow-2xl hover:shadow-[0_15px_45px_rgba(192,132,252,0.18)] hover:-translate-y-1"
+            >
+              {/* Tactile Chassis Corner Screw Dots */}
+              <div className="absolute top-3.5 left-3.5 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+              <div className="absolute top-3.5 right-3.5 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+
+              {/* 3D Holographic Visual Asset */}
+              <div className="relative aspect-[4/3] w-full flex items-center justify-center my-3">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-contain p-1 group-hover:scale-108 group-hover:drop-shadow-[0_10px_25px_rgba(192,132,252,0.4)] transition-all duration-500"
+                />
+              </div>
+
+              {/* Bottom Information & Action */}
+              <div className="pt-2 flex items-end justify-between gap-3">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#D8B4FE] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs text-zinc-400 mt-1 font-light leading-snug">
+                    {service.subtitle}
+                  </p>
+                </div>
+
+                <Link
+                  href={service.link}
+                  className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-[#C084FC] hover:text-black border border-white/15 text-zinc-300 flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm"
+                  aria-label={`Explore ${service.title}`}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+        {/* Horizontal Frosted Glass Stats Metrics Ribbon */}
+        <div className="mt-8 sm:mt-10 rounded-2xl sm:rounded-full p-6 sm:px-10 sm:py-5 bg-[#151326]/80 border border-white/10 backdrop-blur-2xl shadow-xl grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+          
+          {/* Stat 1 */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/30 flex items-center justify-center text-[#C084FC]">
+              <Users className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xl sm:text-2xl font-black text-white">150+</div>
+              <div className="text-xs text-zinc-400 font-light">Happy Clients</div>
+            </div>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-full bg-[#FF8A00]/20 border border-[#FF8A00]/30 flex items-center justify-center text-[#FF8A00]">
+              <Folder className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xl sm:text-2xl font-black text-white">300+</div>
+              <div className="text-xs text-zinc-400 font-light">Projects Completed</div>
+            </div>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-full bg-[#F59247]/20 border border-[#F59247]/30 flex items-center justify-center text-[#F59247]">
+              <Trophy className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xl sm:text-2xl font-black text-white">5+</div>
+              <div className="text-xs text-zinc-400 font-light">Years Experience</div>
+            </div>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-full bg-[#EC4899]/20 border border-[#EC4899]/30 flex items-center justify-center text-[#F472B6]">
+              <Heart className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xl sm:text-2xl font-black text-white">100%</div>
+              <div className="text-xs text-zinc-400 font-light">Client Satisfaction</div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ======================================================== */}
+      {/* 3. SECTION: "FEATURED WORK / RECENT PROJECTS"             */}
+      {/* ======================================================== */}
+      <section id="projects" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative border-t border-white/[0.08]">
+        
+        {/* Section Header */}
+        <div className="flex items-end justify-between gap-6 mb-12 sm:mb-14">
+          <div>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 block mb-1">
+              FEATURED WORK
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+              Recent <span className="text-[#C084FC]">Projects</span>
+            </h2>
+          </div>
+
+          <Link
+            href="/work"
+            className="px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white tracking-wide transition-all whitespace-nowrap flex items-center gap-1.5 backdrop-blur-sm"
+          >
+            <span>View All Projects</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {/* 3 Large Showcase Project Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {projects.map((proj) => (
+            <Link
+              key={proj.id}
+              href={proj.link}
+              target={proj.link.startsWith("http") ? "_blank" : undefined}
+              rel={proj.link.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group rounded-3xl p-3 sm:p-3.5 bg-[#151326]/70 border border-white/10 hover:border-white/25 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)]"
+            >
+              {/* Image Frame */}
+              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-black/60">
+                <Image
+                  src={proj.image}
+                  alt={proj.title}
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-all duration-700"
+                />
+                
+                {/* Subtle dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+
+                {/* Top-Right External Link Pill */}
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 border border-white/15 backdrop-blur-md flex items-center justify-center text-white/80 group-hover:text-white group-hover:bg-white/20 transition-all">
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </div>
+
+                {/* Bottom Tag Pill */}
+                <div className="absolute bottom-3 left-3">
+                  <span className="px-3 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md text-[11px] font-mono text-zinc-200">
+                    {proj.tag}
+                  </span>
+                </div>
+              </div>
+
+            </Link>
+          ))}
+        </div>
+
+      </section>
+
+      {/* ======================================================== */}
+      {/* 4. SECTION: "LET'S WORK TOGETHER / BRING YOUR VISION"    */}
+      {/* ======================================================== */}
+      <section className="px-4 sm:px-8 py-14 sm:py-20 max-w-7xl mx-auto relative">
+        <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-r from-[#17142E] via-[#1D183B] to-[#120F24] p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.6)]">
+          
+          {/* Background Arch Art Slice */}
+          <div className="absolute top-0 right-0 w-full sm:w-[60%] h-full pointer-events-none select-none opacity-40 sm:opacity-90 -z-0">
+            <Image
+              src="/neomathic/cta-arch.png"
+              alt="Twilight Sunset Archway"
+              fill
+              className="object-cover object-right"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#17142E] via-[#17142E]/70 to-transparent" />
+          </div>
+
+          {/* Left Content Area */}
+          <div className="relative z-10 max-w-xl space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#D8B4FE] font-bold block">
+              LET&apos;S WORK TOGETHER
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.08]">
+              Bring Your<br />
+              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent">
+                Vision to Life.
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-300 font-light max-w-md pt-1">
+              Creative solutions for a brighter digital future.
+            </p>
+
+            <div className="pt-4">
+              <button
+                onClick={() => setQuoteModalOpen(true)}
+                className="px-8 py-4 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_35px_rgba(255,255,255,0.45)] transition-all inline-flex items-center gap-2 group shadow-xl"
+              >
+                <span>Get in Touch</span>
+                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ======================================================== */}
+      {/* 5. MODALS: SHOWREEL PLAYER & PROJECT INTAKE FORM         */}
+      {/* ======================================================== */}
 
       {/* Behind-The-Scenes / Showreel Modal Player */}
       {reelModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-6 animate-in fade-in duration-200">
-          <div className="relative w-full max-w-4xl bg-[#101216] border border-white/20 rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative w-full max-w-4xl bg-[#141226] border border-white/20 rounded-3xl overflow-hidden shadow-2xl">
             
             <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-black/40">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#00E5FF] animate-pulse" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C084FC] animate-pulse" />
                 <span className="text-xs font-mono font-semibold tracking-wider text-white">
-                  36T MEDIA LAB // BEHIND THE SCENES
+                  36T MEDIA LAB // BEHIND THE SCENES SHOWREEL
                 </span>
               </div>
               <button
@@ -693,7 +505,7 @@ export default function HomePage() {
               </video>
             </div>
 
-            <div className="p-4 sm:p-6 bg-[#07080A] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
+            <div className="p-4 sm:p-6 bg-[#0B0A14] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
               <div>
                 <span className="text-white font-semibold block">I&apos;VE GOT IT — Production Slate</span>
                 <span className="text-zinc-400 font-light">Original Narrative Cinema · 36T Media Division</span>
@@ -701,11 +513,123 @@ export default function HomePage() {
               <Link
                 href="/work"
                 onClick={() => setReelModalOpen(false)}
-                className="text-[#00E5FF] hover:underline font-semibold"
+                className="text-[#C084FC] hover:underline font-semibold"
               >
                 View Full Production Ledger →
               </Link>
             </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* Interactive Get in Touch / Quote Modal */}
+      {quoteModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 sm:p-6 animate-in fade-in duration-200">
+          <div className="relative w-full max-w-lg bg-[#151326] border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
+            
+            <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#C084FC]" />
+                <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
+                  Direct Foundry Commission
+                </span>
+              </div>
+              <button
+                onClick={() => setQuoteModalOpen(false)}
+                className="p-1 text-zinc-400 hover:text-white"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {formSubmitted ? (
+              <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
+                <div className="w-14 h-14 rounded-full bg-[#C084FC]/10 border border-[#C084FC]/30 text-[#C084FC] flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Message Dispatched</h3>
+                <p className="text-sm text-zinc-300 font-light leading-relaxed">
+                  Thank you, <span className="text-[#C084FC] font-semibold">{formData.name}</span>. An engineering director will reach back to you within 24 hours.
+                </p>
+                <button
+                  onClick={() => {
+                    setFormSubmitted(false);
+                    setQuoteModalOpen(false);
+                  }}
+                  className="px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold mt-4"
+                >
+                  Close Window
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-1">Start a Project</h3>
+                  <p className="text-xs text-zinc-400 font-light">
+                    Tell us what you are building and we will configure the platform scope.
+                  </p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-zinc-400">Name *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Alex Mercer"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-base sm:text-sm focus:outline-none focus:border-[#C084FC]"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-zinc-400">Work Email *</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="alex@enterprise.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-base sm:text-sm focus:outline-none focus:border-[#C084FC]"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-zinc-400">Project Type</label>
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-base sm:text-sm focus:outline-none focus:border-[#C084FC]"
+                  >
+                    <option value="Web Development">Web &amp; Cloud Platform Development</option>
+                    <option value="Graphic Design">Design Systems &amp; Brand Architecture</option>
+                    <option value="Video Production">Video Production &amp; Streaming Ingestion</option>
+                    <option value="Platform Licensing">J-Platforms Ecosystem Licensing</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-zinc-400">Brief Description</label>
+                  <textarea
+                    rows={3}
+                    placeholder="Details about your timeline, platforms or project requirements..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-base sm:text-sm focus:outline-none focus:border-[#C084FC] resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3.5 rounded-full bg-white hover:bg-zinc-100 text-black text-sm font-bold tracking-wide transition-all shadow-[0_0_25px_rgba(255,255,255,0.4)] flex items-center justify-center gap-2 mt-2"
+                >
+                  <Send className="w-4 h-4 text-black" />
+                  <span>Send Project Brief</span>
+                </button>
+              </form>
+            )}
 
           </div>
         </div>

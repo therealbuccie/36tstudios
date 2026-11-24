@@ -5,12 +5,12 @@ import { StudioLogo } from "../brand/StudioLogo";
 
 export function StudioFooter() {
   return (
-    <footer className="w-full border-t border-white/[0.08] bg-[#07080A] text-zinc-400 relative overflow-hidden">
+    <footer className="w-full border-t border-white/[0.08] bg-[#0B0A14] text-zinc-400 relative overflow-hidden">
       {/* Subtle corner ambient glow */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00E5FF]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#FF8A00]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C084FC]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#00E5FF]/6 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20">
         
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 sm:gap-12 pb-12 sm:pb-16 border-b border-white/[0.06]">
