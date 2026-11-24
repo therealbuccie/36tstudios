@@ -16,7 +16,6 @@ import {
   CheckCircle2, 
   Send
 } from "lucide-react";
-import { HeroSection } from "@/components/home/HeroSection";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -100,18 +99,96 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080A] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
+    <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (100% Unchanged Official 36T Architecture) */}
+      {/* 1. HERO SECTION (100% Exact Neomathic 3D Composition)     */}
       {/* ======================================================== */}
-      <HeroSection />
+      <section className="relative pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-8 max-w-7xl mx-auto min-h-[95vh] flex flex-col justify-between overflow-hidden">
+        
+        {/* Full Ultra-HD Background Scene (3D Arch, Cubes, Pond, Orb) */}
+        <div className="absolute inset-0 pointer-events-none select-none -z-10">
+          {/* High-Res Scene Image positioned to the right on desktop, centered on mobile */}
+          <div className="absolute top-0 right-0 w-full sm:w-[75%] lg:w-[65%] h-[85%] sm:h-full opacity-90 sm:opacity-100">
+            <Image
+              src="/neomathic/hero-full-scene.png"
+              alt="Neomathic 3D Arch and Crystal Scene"
+              fill
+              className="object-cover sm:object-contain object-top sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
+              priority
+            />
+          </div>
 
-      {/* ======================================================== */}
-      {/* 2. FLOATING SEARCH CAPSULE (Exact Neomathic Style)       */}
-      {/* ======================================================== */}
-      <section className="px-4 sm:px-8 -mt-6 sm:-mt-8 mb-12 sm:mb-16 max-w-7xl mx-auto relative z-20">
-        <div id="search-bar" className="w-full max-w-2xl mx-auto">
+          {/* Smooth radial gradient feathering into the background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A14] via-[#0B0A14]/75 to-transparent sm:w-[60%]" />
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/80 to-transparent" />
+        </div>
+
+        {/* Top-Right Floating Script & Pagination (Exact Match) */}
+        <div className="absolute top-24 sm:top-28 right-6 sm:right-12 hidden md:flex flex-col items-end text-right z-10 select-none">
+          <span className="font-serif italic text-2xl lg:text-3xl tracking-wide bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent drop-shadow-md">
+            Create<br />Build<br />Grow
+          </span>
+          <div className="flex items-center gap-2 mt-4 text-[11px] font-mono text-zinc-400">
+            <span className="text-white font-bold">01</span>
+            <span className="w-4 h-[1px] bg-white/40" />
+            <span>02</span>
+            <span>03</span>
+          </div>
+        </div>
+
+        {/* Hero Left Content Block */}
+        <div className="max-w-2xl relative z-10 pt-4 sm:pt-8">
+          
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-6 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] shadow-[0_0_8px_#C084FC] animate-pulse" />
+            <span className="font-mono text-[10px] xs:text-xs uppercase tracking-widest text-zinc-200 font-medium">
+              CREATIVE · DIGITAL · MODERN
+            </span>
+          </div>
+
+          {/* Monolithic Headline */}
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-[5.25rem] font-black tracking-tight leading-[1.04] font-sans">
+            <span className="block text-white">Ideas into</span>
+            <span className="block bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(192,132,252,0.4)]">
+              Amazing
+            </span>
+            <span className="block bg-gradient-to-r from-[#D8B4FE] via-[#C084FC] to-[#818CF8] bg-clip-text text-transparent">
+              Experiences.
+            </span>
+          </h1>
+
+          {/* Subhead */}
+          <p className="mt-6 text-zinc-300 text-sm xs:text-base sm:text-lg max-w-xl leading-relaxed font-light">
+            We design, develop and create digital experiences that make brands stand out.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-4">
+            <a
+              href="#services"
+              className="px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px]"
+            >
+              <span>Explore Our Work</span>
+              <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <button
+              onClick={() => setReelModalOpen(true)}
+              className="px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
+            >
+              <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                <Play className="w-3 h-3 fill-current text-white ml-0.5" />
+              </div>
+              <span>Watch Showreel</span>
+            </button>
+          </div>
+
+        </div>
+
+        {/* Floating Interactive Search Bar Capsule (Exact Neomathic Position) */}
+        <div id="search-bar" className="mt-14 sm:mt-20 w-full max-w-2xl mx-auto relative z-20">
           <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <Search className="w-4 h-4 text-zinc-400 shrink-0" />
@@ -126,12 +203,12 @@ export default function HomePage() {
 
             <div className="flex items-center gap-2">
               <span className="hidden xs:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-xs font-mono font-medium text-zinc-300">
-                <span>2026</span>
+                <span>2025</span>
                 <span className="text-[10px] text-zinc-500">⌄</span>
               </span>
               <button
                 onClick={() => {
-                  const el = document.getElementById("what-we-do");
+                  const el = document.getElementById("services");
                   el?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors shrink-0 shadow-sm"
@@ -142,16 +219,14 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
       </section>
 
       {/* ======================================================== */}
-      {/* 3. SECTION: "OUR SERVICES / WHAT WE DO" (Exact Neomathic) */}
+      {/* 2. SECTION: "OUR SERVICES / WHAT WE DO"                   */}
       {/* ======================================================== */}
-      <section id="what-we-do" className="px-4 sm:px-8 py-12 sm:py-20 max-w-7xl mx-auto relative">
+      <section id="services" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
         
-        {/* Ambient Gradient Glows */}
-        <div className="pointer-events-none absolute top-10 left-1/4 w-[600px] h-[400px] bg-[#7C3AED]/12 blur-[160px] -z-10" />
-
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
@@ -177,7 +252,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 4 Exact 3D Glass Product Cards */}
+        {/* 4 Iconic 3D Glass Product Cards (Exact Neomathic) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {filteredServices.map((service) => (
             <div
@@ -274,9 +349,9 @@ export default function HomePage() {
       </section>
 
       {/* ======================================================== */}
-      {/* 4. SECTION: "FEATURED WORK / RECENT PROJECTS"             */}
+      {/* 3. SECTION: "FEATURED WORK / RECENT PROJECTS"             */}
       {/* ======================================================== */}
-      <section id="projects" className="px-4 sm:px-8 py-14 sm:py-22 max-w-7xl mx-auto relative border-t border-white/[0.08]">
+      <section id="projects" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative border-t border-white/[0.08]">
         
         {/* Section Header */}
         <div className="flex items-end justify-between gap-6 mb-12 sm:mb-14">
@@ -340,7 +415,7 @@ export default function HomePage() {
       </section>
 
       {/* ======================================================== */}
-      {/* 5. SECTION: "LET'S WORK TOGETHER / BRING YOUR VISION"    */}
+      {/* 4. SECTION: "LET'S WORK TOGETHER / BRING YOUR VISION"    */}
       {/* ======================================================== */}
       <section className="px-4 sm:px-8 py-14 sm:py-20 max-w-7xl mx-auto relative">
         <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-r from-[#17142E] via-[#1D183B] to-[#120F24] p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.6)]">
@@ -386,7 +461,7 @@ export default function HomePage() {
       </section>
 
       {/* ======================================================== */}
-      {/* 6. MODALS: SHOWREEL & DIRECT INTAKE FORM                 */}
+      {/* 5. MODALS: SHOWREEL & DIRECT INTAKE FORM                 */}
       {/* ======================================================== */}
 
       {/* Behind-The-Scenes / Showreel Modal Player */}
