@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   description: "36T Studios designs and engineers modern digital platforms, visual systems, and original narrative media. Product Architecture. Digital Craft.",
   keywords: ["36T Studios", "Design Studio", "Technology Studio", "Product Architecture", "Whisppr", "jOS", "JStream", "I've Got It Film"],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-icon.png",
   },
 };
 
@@ -38,7 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} dark antialiased scroll-smooth`}
     >
-      <body className="min-h-screen flex flex-col bg-[#0B0A14] text-[#F4F4F6] selection:bg-[#C084FC] selection:text-black overflow-x-hidden font-sans">
+      <body className="min-h-screen flex flex-col bg-[#0B0A14] text-[#F4F4F6] selection:bg-[#F59247] selection:text-black overflow-x-hidden font-sans">
         <GlobalNavigation />
         <main className="flex-1 pt-20 flex flex-col">
           {children}

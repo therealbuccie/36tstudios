@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/home/HeroSection";
+import { LogoRun } from "@/components/brand/LogoRun";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -76,8 +77,8 @@ export default function HomePage() {
       value: "150+",
       label: "Happy Clients",
       sublabel: "100% Proprietary Codebase",
-      icon: <Users className="w-5 h-5 text-[#C084FC]" />,
-      aura: "bg-[#7C3AED]/20 border-[#7C3AED]/30",
+      icon: <Users className="w-5 h-5 text-[#00E5FF]" />,
+      aura: "bg-[#00E5FF]/15 border-[#00E5FF]/30",
     },
     {
       value: "300+",
@@ -97,8 +98,8 @@ export default function HomePage() {
       value: "100%",
       label: "Client Satisfaction",
       sublabel: "4+ Core Production Disciplines",
-      icon: <Heart className="w-5 h-5 text-[#F472B6]" />,
-      aura: "bg-[#EC4899]/20 border-[#EC4899]/30",
+      icon: <Heart className="w-5 h-5 text-[#FFA665]" />,
+      aura: "bg-[#FFA665]/15 border-[#FFA665]/30",
     },
   ];
 
@@ -144,12 +145,17 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
+    <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#F59247] selection:text-black">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION                                          */}
       {/* ======================================================== */}
       <HeroSection />
+
+      {/* ======================================================== */}
+      {/* 1B. BRAND LOGO RUN & PLATFORM ECOSYSTEM MARQUEE          */}
+      {/* ======================================================== */}
+      <LogoRun />
 
       {/* ======================================================== */}
       {/* 2. SECTION: "OUR SERVICES // WHAT WE DO"                  */}
@@ -163,7 +169,7 @@ export default function HomePage() {
               OUR SERVICES
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              What <span className="text-[#C084FC]">We Do</span>
+              What <span className="text-[#F59247]">We Do</span>
             </h2>
           </div>
 
@@ -204,7 +210,7 @@ export default function HomePage() {
                 {/* Card Information */}
                 <div className="flex flex-col flex-1 justify-between">
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#D8B4FE] transition-colors tracking-tight">
+                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#FFA665] transition-colors tracking-tight">
                       {service.title}
                     </h3>
                     <p className="text-xs text-zinc-400 mt-1 font-light leading-snug">
@@ -264,7 +270,7 @@ export default function HomePage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-8 sm:mt-10 rounded-2xl sm:rounded-full p-6 sm:px-10 sm:py-5 bg-[#151326]/85 border border-white/10 backdrop-blur-2xl shadow-xl grid grid-cols-2 lg:grid-cols-4 gap-6 items-center"
+          className="mt-8 sm:mt-10 rounded-2xl sm:rounded-full p-6 sm:px-10 sm:py-5 bg-[#0C0F17]/90 border border-white/10 backdrop-blur-2xl shadow-xl grid grid-cols-2 lg:grid-cols-4 gap-6 items-center"
         >
           {capabilitiesStats.map((stat, idx) => (
             <div key={idx} className="flex items-center gap-3.5">
@@ -300,7 +306,7 @@ export default function HomePage() {
               FEATURED WORK
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              Recent <span className="text-[#C084FC]">Projects</span>
+              Recent <span className="text-[#F59247]">Projects</span>
             </h2>
           </div>
 
@@ -321,7 +327,7 @@ export default function HomePage() {
               href={proj.link}
               target={proj.link.startsWith("http") ? "_blank" : undefined}
               rel={proj.link.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group rounded-3xl p-3 sm:p-3.5 bg-[#151326]/70 border border-white/10 hover:border-[#00E5FF]/40 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)]"
+              className="group rounded-3xl p-3 sm:p-3.5 bg-[#0C0F17]/85 border border-white/10 hover:border-[#00E5FF]/40 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)]"
             >
               {/* Image Frame */}
               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-black/60">
@@ -368,7 +374,7 @@ export default function HomePage() {
       {/* 5. SECTION: "LET'S WORK TOGETHER / BRING YOUR VISION"    */}
       {/* ======================================================== */}
       <section className="px-4 sm:px-8 py-14 sm:py-20 max-w-7xl mx-auto relative">
-        <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-r from-[#17142E] via-[#1D183B] to-[#120F24] p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.6)]">
+        <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-r from-[#0C0F17] via-[#141624] to-[#0A0C14] p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.6)]">
           
           {/* Background Arch Art Slice */}
           <div className="absolute top-0 right-0 w-full sm:w-[65%] h-full pointer-events-none select-none opacity-50 sm:opacity-90 -z-0">
@@ -379,17 +385,17 @@ export default function HomePage() {
               className="object-cover object-right"
               quality={95}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#17142E] via-[#17142E]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0C0F17] via-[#0C0F17]/80 to-transparent" />
           </div>
 
           {/* Left Content Area */}
           <div className="relative z-10 max-w-xl space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#D8B4FE] font-bold block">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#FFA665] font-bold block">
               LET&apos;S WORK TOGETHER
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.08]">
               Bring Your<br />
-              <span className="bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white via-amber-100 to-[#F59247] bg-clip-text text-transparent">
                 Vision to Life.
               </span>
             </h2>

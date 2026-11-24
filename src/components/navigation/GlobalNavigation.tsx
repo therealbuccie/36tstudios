@@ -50,7 +50,7 @@ export const GlobalNavigation = () => {
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C084FC] to-[#00E5FF] rounded-full shadow-[0_0_10px_rgba(192,132,252,0.8)]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#F59247] to-[#00E5FF] rounded-full shadow-[0_0_10px_rgba(245,146,71,0.8)]" />
                   )}
                 </Link>
               );

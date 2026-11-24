@@ -7,7 +7,7 @@ export function StudioFooter() {
   return (
     <footer className="w-full border-t border-white/[0.08] bg-[#0B0A14] text-zinc-400 relative overflow-hidden">
       {/* Subtle corner ambient glow */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C084FC]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F59247]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#00E5FF]/6 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20">
