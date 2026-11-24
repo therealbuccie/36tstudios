@@ -146,32 +146,83 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#07080B] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (Pristine Ultra-HD 3D Composition)        */}
+      {/* 1. HERO SECTION (Mirrorless 3D Animated Composition)      */}
       {/* ======================================================== */}
-      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-[96vh] flex flex-col justify-between overflow-hidden">
+      <section className="relative pt-20 xs:pt-24 sm:pt-32 pb-14 sm:pb-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto min-h-[92vh] sm:min-h-[96vh] flex flex-col justify-between overflow-hidden">
         
-        {/* Full Ultra-HD Background Scene (Pristine 3D Render) */}
-        <div className="absolute inset-0 pointer-events-none select-none -z-10">
-          <div className="absolute inset-0 w-full h-full">
+        {/* Mirrorless Viewfinder Corner HUD Brackets */}
+        <div className="absolute top-8 left-8 w-4 h-4 border-t border-l border-white/20 pointer-events-none hidden lg:block z-20" />
+        <div className="absolute top-8 right-8 w-4 h-4 border-t border-r border-white/20 pointer-events-none hidden lg:block z-20" />
+        <div className="absolute bottom-8 left-8 w-4 h-4 border-b border-l border-white/20 pointer-events-none hidden lg:block z-20" />
+        <div className="absolute bottom-8 right-8 w-4 h-4 border-b border-r border-white/20 pointer-events-none hidden lg:block z-20" />
+
+        {/* Full Ultra-HD Background Scene (Animated 3D Render) */}
+        <div className="absolute inset-0 pointer-events-none select-none -z-10 overflow-hidden">
+          
+          {/* Animated Float & Scale Canvas */}
+          <motion.div
+            animate={{ 
+              scale: [1, 1.025, 1], 
+              y: [0, -8, 0],
+            }}
+            transition={{ 
+              duration: 12, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
             <Image
               src="/neomathic/hero-hires.jpg"
-              alt="36T Studios 3D Arch and Crystal Lake Scene"
+              alt="36T Studios Mirrorless 3D Arch and Crystal Lake Scene"
               fill
-              className="object-cover object-[center_right] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
+              className="object-cover object-[72%_center] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
               priority
               quality={98}
             />
-          </div>
+          </motion.div>
+
+          {/* Animated Atmospheric Prismatic Glow Behind Arch & Cubes */}
+          <motion.div
+            animate={{
+              opacity: [0.2, 0.45, 0.2],
+              scale: [0.95, 1.08, 0.95],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-[15%] right-[10%] sm:right-[18%] w-[280px] sm:w-[480px] h-[280px] sm:h-[480px] rounded-full bg-gradient-to-tr from-[#00E5FF]/25 via-[#C084FC]/30 to-[#F59247]/20 blur-3xl pointer-events-none mix-blend-screen"
+          />
+
+          {/* Animated Foreground Luminous Sphere Glow Pulse */}
+          <motion.div
+            animate={{
+              opacity: [0.35, 0.75, 0.35],
+              scale: [0.95, 1.15, 0.95],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-[22%] left-[25%] sm:left-[29%] w-20 sm:w-32 h-20 sm:h-32 rounded-full bg-amber-200/40 blur-xl pointer-events-none mix-blend-screen"
+          />
 
           {/* Atmospheric Overlays for maximum text contrast and seamless blending */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07080B]/95 via-[#07080B]/70 to-transparent w-full sm:w-[65%]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07080B]/98 via-[#07080B]/80 to-transparent w-full sm:w-[68%]" />
           <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#07080B]/90 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#07080B] via-[#07080B]/85 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-44 sm:h-52 bg-gradient-to-t from-[#07080B] via-[#07080B]/85 to-transparent" />
         </div>
 
-        {/* Top-Right Floating Script & Pagination (Exact Match) */}
-        <div className="absolute top-24 sm:top-28 right-6 sm:right-12 hidden md:flex flex-col items-end text-right z-10 select-none">
-          <div className="flex items-center gap-2 mt-4 text-[11px] font-mono text-zinc-400">
+        {/* Top-Right Mirrorless Optical HUD Bar */}
+        <div className="absolute top-20 sm:top-28 right-4 sm:right-10 flex flex-col items-end text-right z-10 select-none">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md text-[10px] font-mono text-zinc-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
+            <span className="tracking-widest">OPTICAL MESH // 4K 60P</span>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 mt-3 text-[11px] font-mono text-zinc-400">
             <span className="text-white font-bold">01</span>
             <span className="w-4 h-[1px] bg-white/40" />
             <span>02</span>
@@ -179,19 +230,19 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Hero Left Content Block */}
-        <div className="max-w-2xl relative z-10 pt-4 sm:pt-8">
+        {/* Hero Left Content Block (Ultra Responsive) */}
+        <div className="max-w-2xl relative z-10 pt-2 sm:pt-6">
           
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-4 sm:mb-6 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_8px_#00E5FF] animate-pulse" />
             <span className="font-mono text-[10px] xs:text-xs uppercase tracking-widest text-zinc-200 font-medium">
               ✦ MEDIA // TECH // SYSTEM ENGINE
             </span>
           </div>
 
-          {/* Monolithic Headline */}
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-[4.75rem] font-black tracking-tight leading-[1.04] font-sans">
+          {/* Monolithic Headline (Responsive Fluid Scaling) */}
+          <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] font-black tracking-tight leading-[1.08] sm:leading-[1.04] font-sans">
             <span className="block text-white">Software</span>
             <span className="block text-white">Architecture.</span>
             <span className="block text-[#F59247] drop-shadow-[0_0_35px_rgba(245,146,71,0.35)]">
@@ -203,15 +254,15 @@ export default function HomePage() {
           </h1>
 
           {/* Subhead */}
-          <p className="mt-6 text-zinc-300 text-sm xs:text-base sm:text-lg max-w-xl leading-relaxed font-light">
+          <p className="mt-4 sm:mt-6 text-zinc-300 text-xs xs:text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light">
             36T Studios builds proprietary digital platforms and partners with ambitious enterprises to engineer custom software, real-time systems, and media infrastructure.
           </p>
 
-          {/* Action Buttons */}
-          <div className="mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-4">
+          {/* Action Buttons (Responsive Stacking) */}
+          <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4 w-full xs:w-auto">
             <a
               href="#services"
-              className="px-7 py-3.5 rounded-full bg-[#00E5FF] text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(0,229,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px]"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#00E5FF] text-black font-semibold text-xs sm:text-sm hover:shadow-[0_0_30px_rgba(0,229,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px]"
             >
               <span>Explore Our Work</span>
               <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
@@ -219,7 +270,7 @@ export default function HomePage() {
 
             <button
               onClick={() => setReelModalOpen(true)}
-              className="px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
+              className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
             >
               <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
                 <Play className="w-3 h-3 fill-current text-white ml-0.5" />
@@ -231,20 +282,20 @@ export default function HomePage() {
         </div>
 
         {/* Floating Interactive Search Bar Capsule (Bridging Hero and Services) */}
-        <div id="search-bar" className="mt-14 sm:mt-18 w-full max-w-2xl mx-auto relative z-20">
-          <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+        <div id="search-bar" className="mt-10 sm:mt-16 w-full max-w-2xl mx-auto relative z-20">
+          <div className="rounded-full p-1.5 pl-4 sm:p-2 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-2 sm:gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
               <Search className="w-4 h-4 text-zinc-400 shrink-0" />
               <input
                 type="text"
                 placeholder="Search projects, systems..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
+                className="w-full bg-transparent text-xs sm:text-sm text-white placeholder-zinc-400 focus:outline-none"
               />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
@@ -254,7 +305,7 @@ export default function HomePage() {
                   <X className="w-3 h-3" />
                 </button>
               )}
-              <span className="bg-black/80 text-white text-xs px-4 py-2 rounded-full border border-white/10 font-mono flex items-center gap-1.5 shrink-0 select-none">
+              <span className="bg-black/80 text-white text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 font-mono flex items-center gap-1.5 shrink-0 select-none">
                 <span>2026</span>
                 <span className="text-[10px] text-zinc-500">⌄</span>
               </span>
@@ -404,7 +455,7 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 4. SECTION: "FEATURED WORK / RECENT PROJECTS"             */}
       {/* ======================================================== */}
-      <section id="projects" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative border-t border-white/[0.08]">
+      <section id="projects" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
         
         {/* Section Header */}
         <div className="flex items-end justify-between gap-6 mb-12 sm:mb-14">
