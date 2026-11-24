@@ -12,9 +12,10 @@ export const GlobalNavigation = () => {
 
   const links = [
     { label: "Home", href: "/" },
-    { label: "Services", href: "/#services" },
+    { label: "Capabilities", href: "/#capabilities" },
     { label: "Projects", href: "/#projects" },
-    { label: "About", href: "/platforms" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Platforms", href: "/platforms" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -141,7 +142,7 @@ export const GlobalNavigation = () => {
               <ArrowRight className="w-4 h-4 text-black" />
             </Link>
             <p className="text-[11px] text-zinc-500 text-center font-mono">
-              36T Studios LLC · Delaware, United States
+              Danbide Millennium (Trading as 36T Studios)
             </p>
           </div>
 

@@ -14,7 +14,11 @@ import {
   Heart, 
   X, 
   CheckCircle2, 
-  Send 
+  Send,
+  ShieldCheck,
+  Code2,
+  Building2,
+  Layers
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/home/HeroSection";
@@ -160,7 +164,8 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 2. SECTION: "OUR SERVICES // WHAT WE DO"                  */}
       {/* ======================================================== */}
-      <section id="services" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative">
+      <section id="capabilities" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative scroll-mt-20">
+        <div id="services" className="absolute -top-24 left-0" />
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14">
@@ -366,6 +371,195 @@ export default function HomePage() {
 
             </Link>
           ))}
+        </div>
+
+      </section>
+
+      {/* ======================================================== */}
+      {/* 4. SECTION: "COMMERCIAL TERMS // BILLING FRAMEWORK"      */}
+      {/* ======================================================== */}
+      <section id="pricing" className="px-4 sm:px-8 py-16 sm:py-24 max-w-7xl mx-auto relative scroll-mt-20">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/10 bg-white/[0.04] text-[10px] sm:text-xs font-mono text-[#F59247] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F59247] animate-pulse" />
+              <span>COMMERCIAL TERMS // BILLING FRAMEWORK</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              Transparent Engagements.<br />
+              <span className="text-[#00E5FF]">Predictable Delivery.</span>
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
+              Whether accessing our proprietary software ecosystem or hiring 36T Studios to build custom digital products, all transactions are processed under transparent commercial agreements with instantaneous electronic receipts.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+            <ShieldCheck className="w-4 h-4 text-[#00E5FF]" />
+            <span>PCI-DSS Level 1 Secure Billing</span>
+          </div>
+        </div>
+
+        {/* 3-Card Commercial Framework Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+          
+          {/* Card 1: J-Platforms Applications */}
+          <div className="rounded-3xl p-6 sm:p-8 bg-[#0C0F17]/90 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-6 shadow-xl">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#00E5FF] flex items-center justify-center">
+                <Layers className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-semibold text-zinc-500 uppercase tracking-wider block">
+                  Product-Specific Subscription &amp; Usage
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+                  J-Platforms Applications
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400 mt-2 font-light leading-relaxed">
+                  Each platform in the 36T ecosystem (JStreams, JEvents, Jposta, Whisppr) features transparent pricing activated directly within each product portal upon user login.
+                </p>
+              </div>
+
+              <div className="space-y-2.5 pt-4 border-t border-white/[0.06]">
+                {[
+                  "Self-serve account tiers inside each app",
+                  "Transparent pay-as-you-go & monthly plans",
+                  "Direct billing dashboard for receipts & invoices",
+                  "Instant electronic feature activation",
+                ].map((feat, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-300">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00E5FF] shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/[0.06]">
+              <a
+                href="#capabilities"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-white font-medium text-xs sm:text-sm transition-all"
+              >
+                <span>Explore Platforms</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Card 2: Client Engineering & Sprints [FEATURED CARD] */}
+          <div className="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#131625] to-[#0A0C14] border-2 border-[#00E5FF]/40 hover:border-[#00E5FF] transition-all flex flex-col justify-between space-y-6 shadow-[0_0_50px_rgba(0,229,255,0.12)]">
+            {/* Featured Badge */}
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#00E5FF] text-black font-mono text-[10px] font-bold tracking-wider uppercase shadow-[0_0_20px_rgba(0,229,255,0.5)]">
+              FEATURED // BESPOKE SOW BUILDS
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/30 text-[#00E5FF] flex items-center justify-center">
+                <Code2 className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-semibold text-[#00E5FF] uppercase tracking-wider block">
+                  Milestone-Based Custom Invoicing
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+                  Client Engineering &amp; Sprints
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-300 mt-2 font-light leading-relaxed">
+                  Custom web applications, mobile platforms, and WebRTC streaming infrastructure. Billed via agreed milestones and formal statements of work.
+                </p>
+              </div>
+
+              <div className="space-y-2.5 pt-4 border-t border-white/[0.08]">
+                {[
+                  "Structured milestone billing schedule",
+                  "Detailed Statement of Work (SOW) per sprint",
+                  "Direct electronic invoice payment via card or bank transfer",
+                  "Weekly staging deployments & code releases",
+                ].map((feat, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-white">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00E5FF] shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/[0.08]">
+              <Link
+                href="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-zinc-200 transition-all shadow-lg shadow-white/10"
+              >
+                <span>Request Scope Estimate</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 3: Enterprise & Dedicated Cloud */}
+          <div className="rounded-3xl p-6 sm:p-8 bg-[#0C0F17]/90 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-6 shadow-xl">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#F59247] flex items-center justify-center">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-semibold text-zinc-500 uppercase tracking-wider block">
+                  Custom Annual Licensing &amp; SLAs
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+                  Enterprise &amp; Dedicated Cloud
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400 mt-2 font-light leading-relaxed">
+                  Dedicated cloud infrastructure, custom SDK licensing (Whisppr Core / JStreams Engine), and white-label deployments tailored for institutional security standards.
+                </p>
+              </div>
+
+              <div className="space-y-2.5 pt-4 border-t border-white/[0.06]">
+                {[
+                  "Tailored enterprise licensing agreement",
+                  "Dedicated edge infrastructure & priority nodes",
+                  "99.98% uptime SLA with 24/7 technical desk",
+                  "Custom compliance and data sovereignty",
+                ].map((feat, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-300">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#F59247] shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/[0.06]">
+              <Link
+                href="/contact?scope=Enterprise%20Dedicated%20Cloud"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-white font-medium text-xs sm:text-sm transition-all"
+              >
+                <span>Inquire Enterprise</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Compliance Assurance Banner */}
+        <div className="mt-10 sm:mt-12 rounded-2xl p-4 sm:p-5 bg-black/40 border border-white/10 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-4 h-4" />
+            </div>
+            <p className="text-xs font-mono text-zinc-300">
+              All service retainers and platform licenses are billed electronically with formal invoices, instant payment confirmations, and 256-bit SSL encryption. Processed by <span className="text-white font-bold">Danbide Millennium</span>.
+            </p>
+          </div>
+          <div className="flex items-center gap-4 text-[11px] font-mono text-zinc-400 shrink-0">
+            <Link href="/terms" className="hover:text-white transition-colors underline">Terms</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors underline">Privacy</Link>
+            <Link href="/refund-policy" className="hover:text-white transition-colors underline">Refunds</Link>
+            <Link href="/fulfillment-policy" className="hover:text-white transition-colors underline">Fulfillment</Link>
+          </div>
         </div>
 
       </section>
