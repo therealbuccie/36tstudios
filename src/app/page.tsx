@@ -102,26 +102,27 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (100% Exact Neomathic 3D Composition)     */}
+      {/* 1. HERO SECTION (Pristine Ultra-HD 3D Composition)        */}
       {/* ======================================================== */}
-      <section className="relative pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-8 max-w-7xl mx-auto min-h-[95vh] flex flex-col justify-between overflow-hidden">
+      <section className="relative pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-8 max-w-7xl mx-auto min-h-[96vh] flex flex-col justify-between overflow-hidden">
         
-        {/* Full Ultra-HD Background Scene (3D Arch, Cubes, Pond, Orb) */}
+        {/* Full Ultra-HD Background Scene (Pristine 3D Render) */}
         <div className="absolute inset-0 pointer-events-none select-none -z-10">
-          {/* High-Res Scene Image positioned to the right on desktop, centered on mobile */}
-          <div className="absolute top-0 right-0 w-full sm:w-[75%] lg:w-[65%] h-[85%] sm:h-full opacity-90 sm:opacity-100">
+          <div className="absolute inset-0 w-full h-full">
             <Image
-              src="/neomathic/hero-full-scene.png"
+              src="/neomathic/hero-hires.jpg"
               alt="Neomathic 3D Arch and Crystal Scene"
               fill
-              className="object-cover sm:object-contain object-top sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
+              className="object-cover object-[center_right] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
               priority
+              quality={98}
             />
           </div>
 
-          {/* Smooth radial gradient feathering into the background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A14] via-[#0B0A14]/75 to-transparent sm:w-[60%]" />
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/80 to-transparent" />
+          {/* Atmospheric Overlays for maximum text contrast and seamless blending */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A14]/95 via-[#0B0A14]/65 to-transparent w-full sm:w-[65%]" />
+          <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#0B0A14]/90 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/85 to-transparent" />
         </div>
 
         {/* Top-Right Floating Script & Pagination (Exact Match) */}
