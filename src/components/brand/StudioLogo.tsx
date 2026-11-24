@@ -4,46 +4,37 @@ import Link from "next/link";
 
 interface StudioLogoProps {
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   withLink?: boolean;
 }
 
 export function StudioLogo({ className = "", size = "md", withLink = true }: StudioLogoProps) {
-  // Dimensions based on size
-  const circleSizes = {
-    sm: "w-7 h-7 text-[11px]",
-    md: "w-9 h-9 text-[13px]",
-    lg: "w-12 h-12 text-[17px]",
+  // Dimension ratios based on aspect ratio 412x227 (~1.815)
+  const sizeMap = {
+    sm: { width: 76, height: 42 },
+    md: { width: 96, height: 53 },
+    lg: { width: 130, height: 72 },
+    xl: { width: 170, height: 94 },
   };
 
-  const textSizes = {
-    sm: "text-sm",
-    md: "text-base",
-    lg: "text-xl",
-  };
+  const dim = sizeMap[size] || sizeMap.md;
 
   const content = (
-    <div className={`inline-flex items-center gap-2.5 group select-none ${className}`}>
-      {/* Signature warm apricot-orange disc */}
-      <div 
-        className={`${circleSizes[size]} rounded-full bg-[#F59247] text-black font-black flex items-center justify-center tracking-tighter shrink-0 shadow-[0_0_16px_rgba(245,146,71,0.35)] group-hover:shadow-[0_0_24px_rgba(245,146,71,0.6)] group-hover:scale-105 transition-all duration-300`}
-        style={{
-          background: "linear-gradient(135deg, #FF9F59 0%, #F59247 60%, #E07829 100%)",
-        }}
-      >
-        <span className="translate-y-[-0.5px]">36T</span>
-      </div>
-
-      {/* Studio Wordmark */}
-      <span className={`${textSizes[size]} font-bold tracking-tight text-white group-hover:text-white/95 transition-colors`}>
-        Studio<span className="text-[#F59247]">s</span>
-      </span>
+    <div className={`inline-flex items-center group select-none ${className}`}>
+      <Image
+        src="/brand/logo.png"
+        alt="36T Studios"
+        width={dim.width}
+        height={dim.height}
+        className="h-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_16px_rgba(245,146,71,0.45)]"
+        priority
+      />
     </div>
   );
 
   if (withLink) {
     return (
-      <Link href="/" aria-label="36T Studios Home">
+      <Link href="/" aria-label="36T Studios Home" className="inline-flex items-center">
         {content}
       </Link>
     );
