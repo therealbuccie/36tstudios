@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               36T Studios is committed to safeguarding personal information in strict compliance with the <strong className="text-white">Nigeria Data Protection Act (NDPA) 2023</strong>, the Nigeria Data Protection Regulation (NDPR), and applicable international privacy benchmarks (including GDPR-aligned data subject protections for global clientele).
             </p>
             <p className="text-xs text-zinc-400">
-              Data Controller: 36T Studios • Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria.
+              Data Controller: 36T Studios LLC • USA: 1209 North Orange St, Wilmington, DE 19801 • Nigeria Center: Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria.
             </p>
           </section>
 
@@ -135,11 +135,17 @@ export default function PrivacyPage() {
               <span className="text-[#00E5FF] font-mono text-sm">06.</span>
               Data Protection Inquiries
             </h2>
-            <div className="font-mono text-xs text-zinc-300 space-y-1">
+            <div className="font-mono text-xs text-zinc-300 space-y-2 pt-1">
               <div>Privacy Officer: <a href="mailto:privacy@36tstudios.org" className="text-[#00E5FF]">privacy@36tstudios.org</a></div>
               <div>General Support Desk: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
-              <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div className="pt-1 text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">USA Headquarters:</span>
+                1209 North Orange Street, Wilmington, DE 19801, USA
+              </div>
+              <div className="text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
+                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+              </div>
             </div>
           </section>
 

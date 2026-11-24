@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Mail, Phone, MapPin, Lock } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Mail, MapPin, Lock } from "lucide-react";
 import { StudioLogo } from "../brand/StudioLogo";
 
 export function StudioFooter() {
@@ -119,32 +119,38 @@ export function StudioFooter() {
             </ul>
           </div>
 
-          {/* Column 4: Operational Office & Support */}
+          {/* Column 4: Operational Offices & Inquiries */}
           <div className="space-y-3.5">
             <div className="text-xs font-semibold text-white tracking-wider uppercase flex items-center gap-1.5 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]" />
-              Corporate Headquarters
+              Global Studios &amp; Offices
             </div>
-            <div className="space-y-2 text-xs font-mono text-zinc-300">
+            <div className="space-y-3 text-xs font-mono text-zinc-300">
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#00E5FF] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
-                  Danbide Millennium<br />
-                  22/23 Doherty Street, Alausa,<br />
-                  Ikeja, Lagos, Nigeria
+                  <strong className="text-white block font-sans text-xs">USA Headquarters</strong>
+                  1209 North Orange Street<br />
+                  Wilmington, DE 19801, USA
                 </span>
               </div>
-              <div className="flex items-center gap-2 pt-1">
-                <Mail className="w-3.5 h-3.5 text-[#F59247] shrink-0" />
-                <a href="mailto:support@36tstudios.org" className="hover:text-white transition-colors">support@36tstudios.org</a>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#F59247] shrink-0 mt-0.5" />
+                <span className="leading-relaxed">
+                  <strong className="text-white block font-sans text-xs">Nigeria Center</strong>
+                  Danbide Millennium Estate<br />
+                  22/23 Doherty St, Alausa, Lagos
+                </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#F59247] shrink-0" />
-                <a href="mailto:billing@36tstudios.org" className="hover:text-white transition-colors">billing@36tstudios.org</a>
-              </div>
-              <div className="flex items-center gap-2 pt-1">
-                <Phone className="w-3.5 h-3.5 text-[#00E5FF] shrink-0" />
-                <a href="tel:+2348160197013" className="text-white hover:text-[#00E5FF] transition-colors">+234 816 019 7013</a>
+              <div className="pt-1.5 space-y-1.5 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-[#F59247] shrink-0" />
+                  <a href="mailto:support@36tstudios.org" className="hover:text-white transition-colors">support@36tstudios.org</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-[#00E5FF] shrink-0" />
+                  <a href="mailto:billing@36tstudios.org" className="hover:text-white transition-colors">billing@36tstudios.org</a>
+                </div>
               </div>
             </div>
           </div>

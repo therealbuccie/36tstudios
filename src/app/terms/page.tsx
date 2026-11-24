@@ -53,11 +53,21 @@ export default function TermsPage() {
             <p>
               36T Studios and the J-Platforms digital ecosystem are owned, operated, and billed by <strong className="text-white">36T Studios</strong>.
             </p>
-            <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] font-mono text-xs text-zinc-300">
-              <span className="text-zinc-500 block uppercase text-[10px] mb-1">Nigeria Operations &amp; Center Address</span>
-              36T Studios<br />
-              Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria<br />
-              Official Support: support@36tstudios.org • Billing: billing@36tstudios.org
+            <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] font-mono text-xs text-zinc-300 space-y-2.5">
+              <div>
+                <span className="text-[#00E5FF] block uppercase text-[10px] mb-0.5">USA Headquarters</span>
+                36T Studios LLC<br />
+                Corporation Trust Center, 1209 North Orange Street<br />
+                Wilmington, Delaware 19801, United States of America
+              </div>
+              <div className="pt-2 border-t border-white/[0.06]">
+                <span className="text-[#F59247] block uppercase text-[10px] mb-0.5">Nigeria Center &amp; Operations</span>
+                Danbide Millennium Estate<br />
+                22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+              </div>
+              <div className="pt-2 border-t border-white/[0.06] text-zinc-400">
+                Official Inquiries: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a> • Billing: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a>
+              </div>
             </div>
             <p className="text-xs text-zinc-400 pt-1">
               By accessing our website, creating an account, or authorizing an invoice or electronic payment, you agree to comply with and be bound by these Terms in full.
@@ -150,11 +160,17 @@ export default function TermsPage() {
               Contact Information
             </h2>
             <p>For questions regarding these Terms of Service, please contact our legal desk:</p>
-            <div className="font-mono text-xs text-zinc-300 space-y-1 pt-1">
+            <div className="font-mono text-xs text-zinc-300 space-y-2 pt-1">
               <div>Email: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Billing Desk: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
-              <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div className="pt-1 text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">USA Headquarters:</span>
+                1209 North Orange Street, Wilmington, DE 19801, USA
+              </div>
+              <div className="text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
+                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+              </div>
             </div>
           </section>
 

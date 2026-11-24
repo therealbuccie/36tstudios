@@ -119,12 +119,18 @@ export default function FulfillmentPolicyPage() {
               Technical Delivery Support &amp; Assistance
             </h2>
             <p>If you experience any delay in receiving digital credentials, invoice receipts, or staging access, please reach out directly:</p>
-            <div className="font-mono text-xs text-zinc-300 space-y-1 pt-1">
+            <div className="font-mono text-xs text-zinc-300 space-y-2 pt-1">
               <div>Technical Support: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Billing &amp; Invoicing: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
-              <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Operating Entity: 36T Studios</div>
-              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Operating Entity: 36T Studios LLC</div>
+              <div className="pt-1 text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">USA Headquarters:</span>
+                1209 North Orange Street, Wilmington, DE 19801, USA
+              </div>
+              <div className="text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
+                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+              </div>
             </div>
           </section>
 

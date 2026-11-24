@@ -125,12 +125,18 @@ export default function RefundPolicyPage() {
               <span className="text-[#00E5FF] font-mono text-sm">04.</span>
               Billing Desk &amp; Invoicing Inquiries
             </h2>
-            <div className="font-mono text-xs text-zinc-300 space-y-1">
+            <div className="font-mono text-xs text-zinc-300 space-y-2 pt-1">
               <div>Invoicing Desk: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
               <div>Client Support: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
-              <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Corporate Entity: 36T Studios</div>
-              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Corporate Entity: 36T Studios LLC</div>
+              <div className="pt-1 text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">USA Headquarters:</span>
+                1209 North Orange Street, Wilmington, DE 19801, USA
+              </div>
+              <div className="text-zinc-400">
+                <span className="text-white block font-sans text-xs mb-0.5">Nigeria Center:</span>
+                Danbide Millennium Estate, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria
+              </div>
             </div>
           </section>
 
