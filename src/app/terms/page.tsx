@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Scale, FileText, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Terms of Service // 36T Studios & Danbide Millennium",
-  description: "Terms of Service governing use of 36tstudios.org and J-Platforms services operated by Danbide Millennium.",
+  title: "Terms of Service // 36T Studios",
+  description: "Terms of Service governing use of 36tstudios.org and J-Platforms services operated by 36T Studios.",
 };
 
 export default function TermsPage() {
@@ -37,7 +37,7 @@ export default function TermsPage() {
             Last Updated: November 24, 2026 • Effective Date: January 1, 2026
           </p>
           <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-            These Terms of Service (&ldquo;Terms&rdquo;) constitute a legally binding agreement between you (&ldquo;Customer&rdquo;, &ldquo;Client&rdquo;, or &ldquo;User&rdquo;) and <strong className="text-white font-semibold">Danbide Millennium (Trading as 36T Studios)</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), governing your access to and use of <code className="text-[#00E5FF]">36tstudios.org</code>, the J-Platforms software suite, and associated engineering and media services.
+            These Terms of Service (&ldquo;Terms&rdquo;) constitute a legally binding agreement between you (&ldquo;Customer&rdquo;, &ldquo;Client&rdquo;, or &ldquo;User&rdquo;) and <strong className="text-white font-semibold">36T Studios</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), governing your access to and use of <code className="text-[#00E5FF]">36tstudios.org</code>, the J-Platforms software suite, and associated engineering and media services.
           </p>
         </div>
 
@@ -51,13 +51,12 @@ export default function TermsPage() {
               Legal Relationship &amp; Operational Entity
             </h2>
             <p>
-              36T Studios and the J-Platforms digital ecosystem are wholly owned, operated, and billed by <strong className="text-white">Danbide Millennium</strong>, a registered commercial entity operating from:
+              36T Studios and the J-Platforms digital ecosystem are owned, operated, and billed by <strong className="text-white">36T Studios</strong>.
             </p>
             <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] font-mono text-xs text-zinc-300">
-              <span className="text-zinc-500 block uppercase text-[10px] mb-1">Operating Headquarters</span>
-              Danbide Millennium (Trading as 36T Studios)<br />
-              22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria<br />
-              Registration Status: Active Commercial Entity<br />
+              <span className="text-zinc-500 block uppercase text-[10px] mb-1">Nigeria Operations &amp; Center Address</span>
+              36T Studios<br />
+              Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria<br />
               Official Support: support@36tstudios.org • Billing: billing@36tstudios.org
             </div>
             <p className="text-xs text-zinc-400 pt-1">
@@ -72,7 +71,7 @@ export default function TermsPage() {
               Scope of Services &amp; Digital Ecosystem
             </h2>
             <p>
-              Danbide Millennium / 36T Studios provides two primary categories of technical solutions:
+              36T Studios provides two primary categories of technical solutions:
             </p>
             <ul className="space-y-2 pl-2">
               <li className="flex items-start gap-2">
@@ -93,7 +92,7 @@ export default function TermsPage() {
               Intellectual Property Rights &amp; Code Ownership
             </h2>
             <p>
-              <strong className="text-white">Proprietary Assets:</strong> All intellectual property, trademarks, design systems, algorithms, source code, and underlying architecture powering 36T Studios, J-Platforms, and the Whisppr protocol remain the exclusive property of Danbide Millennium. Nothing in these Terms grants any user an ownership interest in our pre-existing proprietary IP.
+              <strong className="text-white">Proprietary Assets:</strong> All intellectual property, trademarks, design systems, algorithms, source code, and underlying architecture powering 36T Studios, J-Platforms, and the Whisppr protocol remain the exclusive property of 36T Studios. Nothing in these Terms grants any user an ownership interest in our pre-existing proprietary IP.
             </p>
             <p>
               <strong className="text-white">Custom Client Deliverables:</strong> For bespoke engineering engagements conducted under an authorized SOW, ownership of custom front-end interfaces, client-specific business logic, and custom application code explicitly created for the client will transfer to the client upon <strong className="text-white">full and final settlement</strong> of all agreed milestone invoices.
@@ -140,7 +139,7 @@ export default function TermsPage() {
               Governing Law &amp; Dispute Resolution
             </h2>
             <p>
-              These Terms are governed by and construed in accordance with the commercial and civil laws applicable to Danbide Millennium. Both parties agree that any dispute or claim arising from these Terms or our services shall first be submitted to good-faith amicable negotiation by contacting <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF] underline">billing@36tstudios.org</a> before pursuing formal arbitration.
+              These Terms are governed by and construed in accordance with the commercial and civil laws applicable to 36T Studios. Both parties agree that any dispute or claim arising from these Terms or our services shall first be submitted to good-faith amicable negotiation by contacting <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF] underline">billing@36tstudios.org</a> before pursuing formal arbitration.
             </p>
           </section>
 
@@ -155,7 +154,7 @@ export default function TermsPage() {
               <div>Email: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Billing Desk: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
               <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Physical Address: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
             </div>
           </section>
 

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Lock, Eye, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Privacy Policy // 36T Studios & Danbide Millennium",
-  description: "Privacy Policy, NDPA 2023 compliance, and PCI-DSS Level 1 payment protection statement for 36T Studios and Danbide Millennium.",
+  title: "Privacy Policy // 36T Studios",
+  description: "Privacy Policy, NDPA 2023 compliance, and PCI-DSS Level 1 payment protection statement for 36T Studios.",
 };
 
 export default function PrivacyPage() {
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
             Last Updated: November 24, 2026 • Statutory Reference: NDPA 2023 / NDPR
           </p>
           <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-            This Privacy Policy outlines how <strong className="text-white font-semibold">Danbide Millennium (Trading as 36T Studios)</strong> collects, processes, and protects your personal data and commercial records when you interact with <code className="text-[#00E5FF]">36tstudios.org</code> and the J-Platforms application suite.
+            This Privacy Policy outlines how <strong className="text-white font-semibold">36T Studios</strong> collects, processes, and protects your personal data and commercial records when you interact with <code className="text-[#00E5FF]">36tstudios.org</code> and the J-Platforms application suite.
           </p>
         </div>
 
@@ -51,10 +51,10 @@ export default function PrivacyPage() {
               Data Protection Regulatory Framework
             </h2>
             <p>
-              Danbide Millennium is committed to safeguarding personal information in strict compliance with the <strong className="text-white">Nigeria Data Protection Act (NDPA) 2023</strong>, the Nigeria Data Protection Regulation (NDPR), and applicable international privacy benchmarks (including GDPR-aligned data subject protections for global clientele).
+              36T Studios is committed to safeguarding personal information in strict compliance with the <strong className="text-white">Nigeria Data Protection Act (NDPA) 2023</strong>, the Nigeria Data Protection Regulation (NDPR), and applicable international privacy benchmarks (including GDPR-aligned data subject protections for global clientele).
             </p>
             <p className="text-xs text-zinc-400">
-              Data Controller: Danbide Millennium (Trading as 36T Studios) • 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria.
+              Data Controller: 36T Studios • Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria.
             </p>
           </section>
 
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
               <span>Mandatory Payment Card &amp; PCI-DSS Level 1 Disclosure</span>
             </div>
             <div className="p-4 sm:p-5 rounded-xl bg-black/60 border border-[#00E5FF]/20 text-sm sm:text-base text-white leading-relaxed font-mono">
-              &ldquo;Danbide Millennium / 36T Studios processes all electronic transactions via PCI-DSS Level 1 certified payment infrastructure. We never store raw cardholder details, debit/credit card numbers, CVV codes, or bank authorization PINs on our servers.&rdquo;
+              &ldquo;36T Studios processes all electronic transactions via PCI-DSS Level 1 certified payment infrastructure. We never store raw cardholder details, debit/credit card numbers, CVV codes, or bank authorization PINs on our servers.&rdquo;
             </div>
             <p className="text-xs sm:text-sm text-zinc-300">
               All card data entered during subscription checkout or milestone invoice settlement is directly encrypted and tokenized by audited, bank-grade payment gateways (including Stripe, Flutterwave, and authorized merchant acquiring processors) using end-to-end 256-bit SSL encryption.
@@ -139,7 +139,7 @@ export default function PrivacyPage() {
               <div>Privacy Officer: <a href="mailto:privacy@36tstudios.org" className="text-[#00E5FF]">privacy@36tstudios.org</a></div>
               <div>General Support Desk: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Physical Address: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
             </div>
           </section>
 

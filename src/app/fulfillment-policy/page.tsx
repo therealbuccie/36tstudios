@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, Send, CheckCircle2, Zap, Server, FileCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Delivery & Fulfillment Policy // 36T Studios & Danbide Millennium",
-  description: "Electronic Delivery, Digital SaaS Activation, and Custom Development Fulfillment Policy for 36T Studios and Danbide Millennium.",
+  title: "Delivery & Fulfillment Policy // 36T Studios",
+  description: "Electronic Delivery, Digital SaaS Activation, and Custom Development Fulfillment Policy for 36T Studios.",
 };
 
 export default function FulfillmentPolicyPage() {
@@ -37,7 +37,7 @@ export default function FulfillmentPolicyPage() {
             Last Updated: November 24, 2026 • Delivery Channel: 100% Electronic &amp; Digital
           </p>
           <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-            This Fulfillment and Delivery Policy describes how digital services, software licenses, platform access, and custom engineering code are provisioned and delivered to customers by <strong className="text-white font-semibold">Danbide Millennium (Trading as 36T Studios)</strong>.
+            This Fulfillment and Delivery Policy describes how digital services, software licenses, platform access, and custom engineering code are provisioned and delivered to customers by <strong className="text-white font-semibold">36T Studios</strong>.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function FulfillmentPolicyPage() {
               Digital-Only Service Delivery (No Physical Shipping)
             </h2>
             <p>
-              Danbide Millennium / 36T Studios specializes exclusively in software engineering, digital platform infrastructure, cloud APIs, and studio media assets.
+              36T Studios specializes exclusively in software engineering, digital platform infrastructure, cloud APIs, and studio media assets.
             </p>
             <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] text-xs font-mono text-zinc-300 space-y-1">
               <div className="text-white font-bold uppercase tracking-wider">Notice to Cardholders &amp; Customers:</div>
@@ -123,8 +123,8 @@ export default function FulfillmentPolicyPage() {
               <div>Technical Support: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Billing &amp; Invoicing: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
               <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Operating Entity: Danbide Millennium (Trading as 36T Studios)</div>
-              <div>Address: 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Operating Entity: 36T Studios</div>
+              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
             </div>
           </section>
 

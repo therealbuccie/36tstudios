@@ -551,7 +551,7 @@ export default function HomePage() {
               <ShieldCheck className="w-4 h-4" />
             </div>
             <p className="text-xs font-mono text-zinc-300">
-              All service retainers and platform licenses are billed electronically with formal invoices, instant payment confirmations, and 256-bit SSL encryption. Processed by <span className="text-white font-bold">Danbide Millennium</span>.
+              All service retainers and platform licenses are billed electronically with formal invoices, instant payment confirmations, and 256-bit SSL encryption. Processed securely by <span className="text-white font-bold">36T Studios</span>.
             </p>
           </div>
           <div className="flex items-center gap-4 text-[11px] font-mono text-zinc-400 shrink-0">

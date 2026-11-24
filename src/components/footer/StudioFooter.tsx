@@ -19,11 +19,11 @@ export function StudioFooter() {
           <div className="space-y-4">
             <StudioLogo size="md" />
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-light pt-1">
-              36T Studios and the J-Platforms digital ecosystem are owned, operated, and billed by <strong className="text-white font-medium">Danbide Millennium</strong>.
+              36T Studios designs, engineers, and operates the J-Platforms digital ecosystem. Full-cycle application engineering and media productions.
             </p>
             <div className="text-[11px] font-mono text-zinc-500 space-y-1">
-              <div>Trading As: 36T Studios // J-Platforms</div>
-              <div>Commercial Entity: Danbide Millennium</div>
+              <div>Studio: 36T Studios // J-Platforms</div>
+              <div>Digital Product Engineering &amp; Systems</div>
             </div>
           </div>
 
@@ -154,7 +154,7 @@ export function StudioFooter() {
         {/* Corporate Copyright & Legal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4 text-center sm:text-left">
           <div className="font-mono text-[11px] sm:text-xs">
-            © 2026 Danbide Millennium (Trading as 36T Studios). All Rights Reserved.
+            © 2026 36T Studios. All Rights Reserved.
           </div>
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-mono">
             <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms</Link>

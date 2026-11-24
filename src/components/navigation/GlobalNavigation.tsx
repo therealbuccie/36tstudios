@@ -142,7 +142,7 @@ export const GlobalNavigation = () => {
               <ArrowRight className="w-4 h-4 text-black" />
             </Link>
             <p className="text-[11px] text-zinc-500 text-center font-mono">
-              Danbide Millennium (Trading as 36T Studios)
+              36T Studios // Digital Product Engineering
             </p>
           </div>
 

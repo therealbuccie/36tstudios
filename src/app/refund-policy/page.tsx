@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, RefreshCw, AlertCircle, CheckCircle2, Clock, Mail } from "lucide-react";
 
 export const metadata = {
-  title: "Refund & Cancellation Policy // 36T Studios & Danbide Millennium",
+  title: "Refund & Cancellation Policy // 36T Studios",
   description: "Official Refund, Cancellation, and Dispute Resolution Policy for J-Platforms subscriptions and custom engineering projects.",
 };
 
@@ -37,7 +37,7 @@ export default function RefundPolicyPage() {
             Last Updated: November 24, 2026 • Billing Desk: billing@36tstudios.org
           </p>
           <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-            This Policy sets forth the terms governing subscription cancellations, milestone deposit refunds, and transaction dispute resolutions for services provided by <strong className="text-white font-semibold">Danbide Millennium (Trading as 36T Studios)</strong>.
+            This Policy sets forth the terms governing subscription cancellations, milestone deposit refunds, and transaction dispute resolutions for services provided by <strong className="text-white font-semibold">36T Studios</strong>.
           </p>
         </div>
 
@@ -129,8 +129,8 @@ export default function RefundPolicyPage() {
               <div>Invoicing Desk: <a href="mailto:billing@36tstudios.org" className="text-[#00E5FF]">billing@36tstudios.org</a></div>
               <div>Client Support: <a href="mailto:support@36tstudios.org" className="text-[#00E5FF]">support@36tstudios.org</a></div>
               <div>Telephone: <span className="text-white">+234 816 019 7013</span></div>
-              <div>Corporate Entity: Danbide Millennium (Trading as 36T Studios)</div>
-              <div>Address: 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
+              <div>Corporate Entity: 36T Studios</div>
+              <div>Nigeria Center: Danbide Millennium, 22/23 Doherty Street, Alausa, Ikeja, Lagos, Nigeria</div>
             </div>
           </section>
 
