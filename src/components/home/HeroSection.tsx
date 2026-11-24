@@ -26,10 +26,12 @@ export const HeroSection = () => {
         </div>
 
         {/* Two-Line High-Impact Headline */}
-        <h1 className="text-[26px] sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.08] max-w-2xl text-white">
-          <span>WE DESIGN & BUILD YOUR APPS.</span>
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.08] max-w-2xl text-white">
+          <span className="block">
+            WE DESIGN &amp; BUILD<br className="sm:hidden" /> YOUR APPS.
+          </span>
           <span className="block bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-            YOU SCALE YOUR BUSINESS.
+            YOU SCALE<br className="sm:hidden" /> YOUR BUSINESS.
           </span>
         </h1>
 
