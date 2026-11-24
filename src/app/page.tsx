@@ -324,13 +324,13 @@ export default function HomePage() {
                 <div className="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
                 <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
 
-                {/* 3D Asset Placement */}
-                <div className="bg-black/30 rounded-2xl border border-white/5 aspect-square overflow-hidden p-3 flex items-center justify-center relative w-full mb-5 shadow-inner">
+                {/* 3D Asset Placement - Borderless & Mirrorless, Fills the Box */}
+                <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-5">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
