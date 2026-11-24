@@ -23,7 +23,7 @@ import {
   Boxes,
   Cpu
 } from "lucide-react";
-import { SoftwarePeek } from "@/components/home/SoftwarePeek";
+import { HeroSection } from "@/components/home/HeroSection";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -56,64 +56,7 @@ export default function HomePage() {
       {/* ======================================================== */}
       {/* 1. HERO COMPONENT: Software Architecture & Product Foundry */}
       {/* ======================================================== */}
-      <section className="relative px-6 pt-24 pb-12 sm:pt-36 sm:pb-16 max-w-6xl mx-auto text-center">
-        
-        {/* Eyebrow Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.14] bg-white/[0.04] backdrop-blur-md text-xs font-mono font-medium text-zinc-200 mb-8 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_10px_#00E5FF] animate-pulse" />
-          <span>● Software Architecture &amp; Product Foundry</span>
-        </div>
-
-        {/* Master Headline: Line 1 Solid White, Line 2 Amber-to-Cyan Gradient */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[0.92] mb-8 font-sans">
-          Software Architecture.
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8A00] via-[#F59247] to-[#00E5FF]">
-            Built Without Compromise.
-          </span>
-        </h1>
-
-        {/* Studio Positioning Subhead */}
-        <p className="max-w-3xl mx-auto text-lg sm:text-xl text-zinc-300 font-light leading-relaxed mb-10">
-          36T Studios builds proprietary digital platforms and partners with ambitious enterprises to engineer custom mobile applications, real-time systems, and scalable infrastructure.
-        </p>
-
-        {/* Action CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-          <a
-            href="#contact"
-            className="px-8 py-3.5 rounded-full bg-[#00E5FF] hover:bg-[#33EAFF] text-black text-sm font-bold tracking-wide transition-all duration-300 flex items-center gap-2 shadow-[0_0_30px_rgba(0,229,255,0.45)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)]"
-          >
-            <span>Start a Project</span>
-            <ArrowUpRight className="w-4 h-4 text-black" />
-          </a>
-
-          <a
-            href="#products"
-            className="px-8 py-3.5 rounded-full border border-white/20 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-white text-sm font-semibold tracking-wide transition-all flex items-center gap-2 backdrop-blur-sm"
-          >
-            <span>Explore Our Products</span>
-            <ArrowRight className="w-4 h-4 text-zinc-400" />
-          </a>
-        </div>
-
-        {/* Monospaced Capability Ribbon */}
-        <div className="max-w-4xl mx-auto py-3 px-4 rounded-xl border border-white/[0.06] bg-white/[0.02] text-[11px] sm:text-xs font-mono text-zinc-400 tracking-wider overflow-x-auto whitespace-nowrap mb-6 scrollbar-none">
-          <span>ENTERPRISE APP DEVELOPMENT</span>
-          <span className="text-[#00E5FF] mx-3">//</span>
-          <span>WEBRTC REAL-TIME AUDIO</span>
-          <span className="text-[#00E5FF] mx-3">//</span>
-          <span>CUSTOM TOUCH ENVIRONMENTS</span>
-          <span className="text-[#00E5FF] mx-3">//</span>
-          <span>PROPRIETARY IP LICENSING</span>
-        </div>
-
-        {/* Scroll Hook: Top 180px of hardware-grade interface peeking above the fold */}
-        <div className="relative">
-          <SoftwarePeek />
-        </div>
-
-      </section>
+      <HeroSection />
 
       {/* ======================================================== */}
       {/* 2. SECTION 1: PROPRIETARY APPLICATIONS (Ready to License)*/}
