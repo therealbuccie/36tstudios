@@ -41,6 +41,11 @@ export function StudioFooter() {
                 <Link href="/#pricing" className="hover:text-white transition-colors">Commercial Terms &amp; Pricing</Link>
               </li>
               <li>
+                <Link href="/dashboard" className="text-[#00E5FF] hover:underline font-mono text-xs flex items-center gap-1">
+                  <span>Studio Operations Dashboard →</span>
+                </Link>
+              </li>
+              <li>
                 <a 
                   href="https://jstreams.pro" 
                   target="_blank" 

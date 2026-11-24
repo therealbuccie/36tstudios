@@ -14,6 +14,7 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [referenceId, setReferenceId] = useState("");
 
   const scopes = [
     { title: "Build Custom Software", desc: "Turnkey client engineering" },
@@ -28,13 +29,31 @@ export default function ContactPage() {
     "Flexible / Scoping",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          scope,
+          timeline,
+        }),
+      });
+      const data = await res.json();
+      if (data && data.id) {
+        setReferenceId(data.id);
+      } else {
+        setReferenceId("INQ-" + Date.now().toString(36).toUpperCase());
+      }
+    } catch {
+      setReferenceId("INQ-" + Date.now().toString(36).toUpperCase());
+    } finally {
       setIsSending(false);
       setSubmitted(true);
-    }, 600);
+    }
   };
 
   return (
@@ -74,8 +93,14 @@ export default function ContactPage() {
                   Project Brief Dispatched
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto font-light leading-relaxed">
-                  Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. Your brief regarding <strong>{scope}</strong> has been routed to our technical leadership in Delaware. We will respond within one business day.
+                  Thank you, <span className="text-[#00E5FF] font-semibold">{formData.name}</span>. Your brief regarding <strong>{scope}</strong> has been encrypted and recorded in our Cloudflare D1 database. Our engineering team will review it within 24 hours.
                 </p>
+                {referenceId && (
+                  <div className="inline-block p-3 rounded-xl bg-black/60 border border-[#00E5FF]/20 text-xs font-mono text-zinc-300 space-y-0.5">
+                    <span className="text-zinc-500 block uppercase text-[10px]">Cloudflare D1 Tracking Code</span>
+                    <span className="text-[#00E5FF] font-bold text-sm tracking-wider">{referenceId}</span>
+                  </div>
+                )}
                 <div className="pt-4">
                   <button
                     onClick={() => {

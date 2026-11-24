@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "36tstudios",
+  "compatibility_date": "2026-11-24",
+  "pages_build_output_dir": "./out",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "36tstudios-db",
+      "database_id": "ceda2d1b-8474-45b0-b160-0d980f41087d"
+    }
+  ]
+}
