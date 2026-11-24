@@ -17,6 +17,7 @@ import {
   Send 
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { HeroSection } from "@/components/home/HeroSection";
 
 export default function HomePage() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -146,144 +147,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0B0A14] text-[#FFFFFF] relative overflow-x-hidden selection:bg-[#C084FC] selection:text-black">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (100% Exact Match to Neomathic Reference) */}
+      {/* 1. HERO SECTION                                          */}
       {/* ======================================================== */}
-      <section className="-mt-20 relative w-full min-h-screen bg-[#0B0A14] overflow-hidden flex flex-col justify-between pt-28 sm:pt-36 pb-14 sm:pb-20 px-4 sm:px-8">
-        
-        {/* Full Ultra-HD Background Scene (Animated 3D Render) */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden">
-          
-          {/* Animated Float Canvas */}
-          <motion.div
-            animate={{ 
-              scale: [1, 1.025, 1], 
-              y: [0, -6, 0],
-            }}
-            transition={{ 
-              duration: 10, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <Image
-              src="/neomathic/hero-scene.jpg"
-              alt="Neomathic 3D Arch and Crystal Scene"
-              fill
-              className="object-cover object-[75%_center] sm:object-right-top drop-shadow-[0_25px_60px_rgba(192,132,252,0.35)]"
-              priority
-              quality={100}
-            />
-          </motion.div>
-
-          {/* Smooth radial gradient feathering into the background for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A14] via-[#0B0A14]/70 to-transparent w-full md:w-[60%] lg:w-[48%] z-[1]" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B0A14] via-[#0B0A14]/70 to-transparent z-[1]" />
-        </div>
-
-        {/* Top-Right Floating Script & Pagination (Exact Match) */}
-        <div className="absolute top-28 sm:top-32 right-6 sm:right-12 hidden md:flex items-center gap-4 z-10 select-none">
-          <div className="font-script text-3xl lg:text-4xl text-right leading-[1.08] tracking-wide bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent drop-shadow-md">
-            Create<br />Build<br />Grow
-          </div>
-          <div className="flex flex-col items-center gap-1.5 text-[10px] font-mono text-zinc-400">
-            <span className="text-white font-bold text-xs">01</span>
-            <div className="w-[2px] h-9 bg-white/20 relative my-0.5 rounded-full overflow-hidden">
-              <div className="w-full h-3.5 bg-white rounded-full shadow-[0_0_8px_white]" />
-            </div>
-            <span className="text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">02</span>
-            <span className="text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">03</span>
-          </div>
-        </div>
-
-        {/* Hero Left Content Block Constrained to max-w-7xl */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between">
-          
-          <div className="max-w-2xl pt-4 sm:pt-6">
-            
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-xl mb-6 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] shadow-[0_0_8px_#C084FC] animate-pulse" />
-              <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-zinc-200 font-medium">
-                CREATIVE · DIGITAL · MODERN
-              </span>
-            </div>
-
-            {/* Monolithic Headline */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.04] font-sans">
-              <span className="block text-white">Ideas into</span>
-              <span className="block bg-gradient-to-r from-[#FFFFFF] via-[#E9D5FF] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(192,132,252,0.4)]">
-                Amazing
-              </span>
-              <span className="block bg-gradient-to-r from-[#D8B4FE] via-[#C084FC] to-[#818CF8] bg-clip-text text-transparent">
-                Experiences.
-              </span>
-            </h1>
-
-            {/* Subhead */}
-            <p className="mt-6 text-zinc-300 text-sm sm:text-base sm:text-lg max-w-xl leading-relaxed font-light">
-              We design, develop and create digital experiences that make brands stand out.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="mt-8 flex flex-row items-center gap-4 flex-wrap">
-              <a
-                href="#services"
-                className="px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all flex items-center justify-center gap-2 group min-h-[46px] shadow-lg"
-              >
-                <span>Explore Our Work</span>
-                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
-              </a>
-
-              <button
-                onClick={() => setReelModalOpen(true)}
-                className="px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2.5 min-h-[46px]"
-              >
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
-                  <Play className="w-3 h-3 fill-current text-white ml-0.5" />
-                </div>
-                <span>Watch Showreel</span>
-              </button>
-            </div>
-
-          </div>
-
-          {/* Floating Interactive Search Bar Capsule (Exact Neomathic Position) */}
-          <div id="search-bar" className="mt-12 sm:mt-16 lg:mt-20 w-full max-w-2xl mx-auto relative z-20">
-            <div className="rounded-full p-2 pl-5 sm:pl-6 bg-[#151326]/90 border border-white/15 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Search className="w-4 h-4 text-zinc-400 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search services, projects..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
-                />
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-xs font-mono font-medium text-zinc-300 select-none">
-                  <span>2025</span>
-                  <span className="text-[10px] text-zinc-500">⌄</span>
-                </span>
-                <button
-                  onClick={() => {
-                    const el = document.getElementById("services");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors shrink-0 shadow-sm"
-                  aria-label="Submit search"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
+      <HeroSection />
 
       {/* ======================================================== */}
       {/* 2. SECTION: "OUR SERVICES // WHAT WE DO"                  */}
